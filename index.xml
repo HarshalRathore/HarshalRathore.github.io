@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Harshal Rathore</title>
+    <link>http://www.example.com/</link>
+    <description>Recent content on Harshal Rathore</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language><atom:link href="http://www.example.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>http://www.example.com/about/</link>
+      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.example.com/about/</guid>
+      <description>I am a Second year student pursuing Artificial Intelligence &amp;amp; Data Science @ SATI . I have a keen interest in Artificial Intelligence, Deep Learning.
+I am an aspiring Open Source enthusiast. Till now I have contributed to many small, big and intermediate projects either supporting with documentations of respective projects or with actual Code to the project.
+Skills    I am a passionate coder. I like to code because it developes your mind and enhances your problem solving skills.</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>http://www.example.com/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.example.com/contact/</guid>
+      <description>Follow me, @johndoe.</description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>http://www.example.com/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.example.com/projects/</guid>
+      <description>Nothing to see here&amp;hellip; Move along!</description>
+    </item>
+    
+  </channel>
+</rss>
