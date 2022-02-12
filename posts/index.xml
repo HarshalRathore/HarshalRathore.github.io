@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Harshal Rathore</title>
+    <link>https://harshalrathore.github.io/posts/</link>
+    <description>Recent content in Posts on Harshal Rathore</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language><atom:link href="https://harshalrathore.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>https://harshalrathore.github.io/posts/git-for-beginners-by-me/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://harshalrathore.github.io/posts/git-for-beginners-by-me/</guid>
+      <description>Git for beginners by me    Set git user info (assuming that you are the only user of this System)
+git config --global user.name &amp;lt;name&amp;gt; git config --global user.email &amp;lt;email&amp;gt; User info for a certain Repository only
+git congig user.name &amp;lt;name&amp;gt; git config user.email &amp;lt;email&amp;gt; Initialize git before using git commands
+git init Add files on staging area to be committed/Save
+git add &amp;lt;file_name&amp;gt; git add . (stages all the files all together) See current git status</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://harshalrathore.github.io/posts/linux-shell-guide/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://harshalrathore.github.io/posts/linux-shell-guide/</guid>
+      <description>Linux SHELL Guide    Shows all hidden files and folders along with normal ones.
+ls -a list lot of information about non-hidden files and directories
+la -l list above info for hidden files and directories too
+ls -la OR ls -l -a to switch to a dir same as cd but it just saves the path from which you came
+pushd &amp;lt;path&amp;gt; to switch back to dir from which you came with pushd.</description>
+    </item>
+    
+  </channel>
+</rss>

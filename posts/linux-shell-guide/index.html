@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+
+    
+      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; block-all-mixed-content; default-src 'self'; child-src 'self'; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net/; form-action 'self'; frame-src 'self'; img-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/ https://cdn.jsdelivr.net/; script-src 'self' 'unsafe-inline' https://www.google-analytics.com; prefetch-src 'self'; connect-src 'self' https://www.google-analytics.com;">
+
+    
+
+    <meta name="author" content="Harshal Rathore">
+    <meta name="description" content="Linux SHELL Guide    Shows all hidden files and folders along with normal ones.
+ls -a list lot of information about non-hidden files and directories
+la -l list above info for hidden files and directories too
+ls -la OR ls -l -a to switch to a dir same as cd but it just saves the path from which you came
+pushd &lt;path&gt; to switch back to dir from which you came with pushd.">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Linux SHELL Guide    Shows all hidden files and folders along with normal ones.
+ls -a list lot of information about non-hidden files and directories
+la -l list above info for hidden files and directories too
+ls -la OR ls -l -a to switch to a dir same as cd but it just saves the path from which you came
+pushd &lt;path&gt; to switch back to dir from which you came with pushd."/>
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Linux SHELL Guide    Shows all hidden files and folders along with normal ones.
+ls -a list lot of information about non-hidden files and directories
+la -l list above info for hidden files and directories too
+ls -la OR ls -l -a to switch to a dir same as cd but it just saves the path from which you came
+pushd &lt;path&gt; to switch back to dir from which you came with pushd." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://harshalrathore.github.io/posts/linux-shell-guide/" /><meta property="article:section" content="posts" />
+
+
+
+
+
+    <title>
+   · Harshal Rathore
+</title>
+
+    
+      <link rel="canonical" href="https://harshalrathore.github.io/posts/linux-shell-guide/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.d9fddbffe6f27e69985dc5fe0471cdb0e57fbf4775714bc3d847accb08f4a1f6.css" integrity="sha256-2f3b/&#43;byfmmYXcX&#43;BHHNsOV/v0d1cUvD2Eesywj0ofY=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.002ee2378e14c7a68f1f0a53d9694ed252090987c4e768023fac694a4fc5f793.css" integrity="sha256-AC7iN44Ux6aPHwpT2WlO0lIJCYfE52gCP6xpSk/F95M=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.92.1" />
+  </head>
+
+  
+  
+    
+  
+  <body class="preload-transitions colorscheme-dark">
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      Harshal Rathore
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/projects/">Projects</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://harshalrathore.github.io/posts/linux-shell-guide/">
+              
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2021-12-11T00:00:00Z'>
+                December 11, 2021
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              4-minute read
+            </span>
+          </div>
+          
+          
+          
+        </div>
+      </header>
+
+      <div>
+        
+        <h1 id="linux-shell-guide">
+  Linux SHELL Guide
+  <a class="heading-link" href="#linux-shell-guide">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h1>
+<p>Shows all hidden files and folders along with normal ones.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ls -a
+</code></pre></div><p>list lot of information about non-hidden files and directories</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">la -l
+</code></pre></div><p>list above info for hidden files and directories too</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ls -la OR ls -l -a
+</code></pre></div><p>to switch to a dir same as cd but it just saves the path from which you came</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">pushd &lt;path&gt;
+</code></pre></div><p>to switch back to dir from which you came with <code>pushd</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">popd
+</code></pre></div><p>tells details of file</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">file &lt;name of file&gt;
+</code></pre></div><p>search a directory or a file in data base</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">locate &lt;name of file or directory&gt;
+</code></pre></div><p>or</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mlocate &lt;name of file or directory&gt;
+</code></pre></div><p>NOTE: run before locate/mlocate to update database</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sudo updatedb
+</code></pre></div><p>see calander</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">cal
+</code></pre></div><p>see if command is installed or not, returns path of the command</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">which &lt;command&gt;
+</code></pre></div><p>brief one-line discription of what a command can do</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">whatis &lt;command&gt;
+</code></pre></div><p>shows the commands related to or contain given keyword</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">apropos &lt;keyword&gt;
+</code></pre></div><p>equivalent to apropos but show information in readable format</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">man &lt;keyword&gt;
+</code></pre></div><p>copy a files and directories</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">cp -r&lt;path of the file to be copied&gt; &lt;name of the copied file&gt;
+</code></pre></div><p>move files and directories</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mv &lt;path of file&gt; &lt;path to be moved&gt;
+</code></pre></div><p>delete/remove files</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">rm &lt;file&gt;
+</code></pre></div><p>delete/remove directories</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">rm -r &lt;directorie&gt;
+</code></pre></div><p>create a text file.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">touch &lt;file_name&gt;
+echo &#39;write text here&#39; &gt; textfile.txt
+printf &#39;write \\ntext \\nhere&#39; &gt; textfile.txt
+</code></pre></div><p>NOTE: use printf for format the text</p>
+<p>show the content of a text file on terminal</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">cat &lt;file&gt;
+</code></pre></div><p>write into the text file</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">cat &gt;&gt; &lt;file_name&gt;
+</code></pre></div><p>copy file1 to file2</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">cat &lt;file1&gt; &gt;&gt; &lt;file2&gt;
+</code></pre></div><ul>
+<li>“&gt;” operator will overwrite the existing data</li>
+<li>“&raquo;” operator will append data</li>
+</ul>
+<p>bash text editor for editing files in CLI format. there are others too</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">nano &lt;file1&gt;
+ls -la ~ &gt;&gt; textfile.txt
+</code></pre></div><p>switch to root user or root account, to exit type exit</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sudo -s
+</code></pre></div><p>switch to another user account, to exit type exit</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">su - &lt;username&gt;
+</code></pre></div><p>move to root user account</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">su
+su -
+</code></pre></div><p>see how many accounts are logged in</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">users
+</code></pre></div><p>executable permission to file for everyone</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">chmod +x &lt;file_name&gt;
+</code></pre></div><p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7ff5704f-89b5-4c80-bb1d-46f694263177/Screenshot_from_2021-07-29_21-15-38.png" alt="Screenshot from 2021-07-29 21-15-38.png"></p>
+<p>get the PID of programme and all its instances</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">pidof brave
+</code></pre></div><p>see the running process</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">top
+</code></pre></div><p>kill process by their name</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">pkill brave
+killall brave
+</code></pre></div><p>kill process by their PID</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">kill &lt;PID of the process&gt;
+</code></pre></div><p>get the snapshot of top (Best)</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ps aux | grep &lt;name of programme or running file or path or aything relatable to it&gt;
+</code></pre></div><p>find the exact package</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">apt search --names--only ___
+</code></pre></div><p>Install .deb files</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sudo dpkg -i /path/to/.deb/file
+</code></pre></div><p><code>sudo apt-get install -f</code> <!-- raw HTML omitted --></p>
+<p><code>apt-cache showpkg/show package-name</code> <!-- raw HTML omitted --></p>
+<p><code>apt-cache depends package-name</code> <!-- raw HTML omitted --></p>
+<p>see package info</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">dpkg-deb -I package.deb
+</code></pre></div><p>create and edit cronjobs (scheduled server tasks)</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">crontab -e
+</code></pre></div><p>see cronjobs on terminal</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">crontab -l
+</code></pre></div><p>create a SCREEN session with name</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">screen -S &lt;name_of_session&gt;
+</code></pre></div><p>see detached and running screen session</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">screen -ls
+</code></pre></div><p>reattach to detached screen session</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">screen -r &lt;pid_of_screen_session&gt;
+</code></pre></div><p>see cronjobs-logs with</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">journalctl -t CROND
+</code></pre></div><p>install/extract tar files</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">tar xvf &lt;file_name&gt;
+</code></pre></div><p>Find Public IPv4 address</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">dig -4 TXT +short o-o.myaddr.l.google.com @ns1.google.com
+</code></pre></div><p>Fix bluetooth in ubuntu&gt;18.04</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sudo modprobe -r btusb &amp;&amp; sudo modprobe btusb
+</code></pre></div><p>Instll/Add PPA repository</p>
+<p><code>sudo add-apt-repository ppa:dr-akulavich/lighttable</code> // adds repository link to /etc/apt/source.list</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sudo apt-get update
+</code></pre></div><p><code>sudo apt-get install lighttable-installer</code> // installing the software</p>
+<p>Remove PPA repository and link</p>
+<p><a href="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/255f1de3-f939-4253-81fd-3135882692d3/listppa.sh">listppa.sh</a></p>
+<p>Use the above script to see the list of installed PPAs</p>
+<p>now remove the ppa</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sudo add-apt-repository --remove ppa:bluetooth/bluez
+</code></pre></div><p>Check mounted/connected disks to the system</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">lsblk
+</code></pre></div><p>Command for burning USB {notice the of and if carefully}</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo dd bs=4M <span style="font-weight:bold">if</span>=Downloads/endeavouros-2021.08.27-x86_64.iso of=/dev/sdb conv=fdatasync status=progress
+</code></pre></div><p>Set-up ssh key for connecting to git</p>
+<p><code>eval </code>ssh-agent``</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">chmod 400 &lt;private_key_file&gt;
+ssh-add ~/.ssh/&lt;private_key_file&gt;**&gt;&gt; /dev/null 2&gt;&amp;1**
+</code></pre></div><p><a href="https://stackoverflow.com/questions/10508843/what-is-dev-null-21">https://stackoverflow.com/questions/10508843/what-is-dev-null-21</a></p>
+<h2 id="pacman-aur">
+  Pacman, AUR
+  <a class="heading-link" href="#pacman-aur">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>List dependency of a package</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pacman -Si
+or
+pacman -Si package_name | grep <span style="font-style:italic">&#39;Depends On&#39;</span>
+or
+pactree -s package_name
+or
+pactree -sr package_name <span style="font-style:italic">#see reverse dependency</span>
+or
+pactree package_name -lu <span style="font-style:italic">#in format for reinstalling dependency</span>
+</code></pre></div><p>See locally installed packages~ AUR(s) or installed with AUR helpers.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pacman -Qm or pacman -Qmq
+</code></pre></div><p>To list all the <strong>Fonts installed in your system</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">fc-list
+</code></pre></div><h2 id="how-to-add-users-in-arch-linux">
+  How to add users in arch Linux
+  <a class="heading-link" href="#how-to-add-users-in-arch-linux">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<ol>
+<li>do <code>adduser NAME</code> or <code>useradd NAME</code> whichever is present in your system.</li>
+<li>then set password for <code>NAME</code> with <code>passwd NAME</code></li>
+</ol>
+<ul>
+<li>
+<p>Give <code>sudo</code> privileges to <code>NAME</code></p>
+<p>To give sudo rights to a user you can add him to group <code>wheel</code> . Wheel is group for users who want every system administrator privileges. you can add a user to group <code>wheel</code> with <code>gpasswd -a NAME wheel</code> , notice to give users of wheel group root privileges in <code>/etc/sudoers</code> (always edit <code>/etc/sudoers</code> with <code>sudo visudo</code> to avoid Error(s) ) file otherwise even if you add users to wheel group they will not be able to use sudo. add this line <code>%wheel ALL=(ALL) ALL</code> for wheel group users in <code>/etc/sudoers.</code></p>
+<p>Or you can custom give a user root privilages like by adding this line</p>
+<p><code>USER_NAME ALL=(ALL) ALL</code> to <code>/etc/sudoers</code> if you choose to do this then you don’t need to add <code>NAME</code> to <code>wheel</code> group.</p>
+<p>but the first approach is recommended.</p>
+</li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2022
+     Harshal Rathore 
+    ·
+    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.39a51230dce2ac866c049b52573e38bf60666af4bc63c1bdf203b9b2d95b1cd6.js" integrity="sha256-OaUSMNzirIZsBJtSVz44v2BmavS8Y8G98gO5stlbHNY="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

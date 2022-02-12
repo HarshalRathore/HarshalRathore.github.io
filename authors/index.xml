@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Authors on Harshal Rathore</title>
-    <link>http://www.example.com/authors/</link>
+    <link>https://harshalrathore.github.io/authors/</link>
     <description>Recent content in Authors on Harshal Rathore</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="http://www.example.com/authors/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language><atom:link href="https://harshalrathore.github.io/authors/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

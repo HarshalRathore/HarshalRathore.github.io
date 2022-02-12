@@ -2,64 +2,64 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://www.example.com/pt-br/authors/</loc>
+    <loc>https://harshalrathore.github.io/pt-br/authors/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://www.example.com/authors/"
+                href="https://harshalrathore.github.io/authors/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
-                href="http://www.example.com/pt-br/authors/"
+                href="https://harshalrathore.github.io/pt-br/authors/"
                 />
   </url><url>
-    <loc>http://www.example.com/pt-br/categories/</loc>
+    <loc>https://harshalrathore.github.io/pt-br/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://www.example.com/categories/"
+                href="https://harshalrathore.github.io/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
-                href="http://www.example.com/pt-br/categories/"
+                href="https://harshalrathore.github.io/pt-br/categories/"
                 />
   </url><url>
-    <loc>http://www.example.com/pt-br/</loc>
+    <loc>https://harshalrathore.github.io/pt-br/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://www.example.com/"
+                href="https://harshalrathore.github.io/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
-                href="http://www.example.com/pt-br/"
+                href="https://harshalrathore.github.io/pt-br/"
                 />
   </url><url>
-    <loc>http://www.example.com/pt-br/series/</loc>
+    <loc>https://harshalrathore.github.io/pt-br/series/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://www.example.com/series/"
+                href="https://harshalrathore.github.io/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
-                href="http://www.example.com/pt-br/series/"
+                href="https://harshalrathore.github.io/pt-br/series/"
                 />
   </url><url>
-    <loc>http://www.example.com/pt-br/tags/</loc>
+    <loc>https://harshalrathore.github.io/pt-br/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://www.example.com/tags/"
+                href="https://harshalrathore.github.io/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
-                href="http://www.example.com/pt-br/tags/"
+                href="https://harshalrathore.github.io/pt-br/tags/"
                 />
   </url>
 </urlset>
