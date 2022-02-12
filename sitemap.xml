@@ -1,34 +1,42 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url>
-    <loc>https://harshalrathore.github.io/about/</loc>
-    <lastmod>2019-02-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://harshalrathore.github.io/posts/git-for-beginners-by-me/</loc>
-  </url><url>
-    <loc>https://harshalrathore.github.io/posts/linux-shell-guide/</loc>
-  </url><url>
-    <loc>https://harshalrathore.github.io/projects/notsospotify/</loc>
-  </url><url>
-    <loc>https://harshalrathore.github.io/projects/tic-tac-toe_made_with_firebase/</loc>
-  </url><url>
-    <loc>https://harshalrathore.github.io/authors/</loc>
-  </url><url>
-    <loc>https://harshalrathore.github.io/categories/</loc>
-  </url><url>
-    <loc>https://harshalrathore.github.io/contact/</loc>
-  </url><url>
-    <loc>https://harshalrathore.github.io/</loc>
-  </url><url>
-    <loc>https://harshalrathore.github.io/posts/</loc>
-  </url><url>
-    <loc>https://harshalrathore.github.io/projects/</loc>
-  </url><url>
-    <loc>https://harshalrathore.github.io/projects/</loc>
-  </url><url>
-    <loc>https://harshalrathore.github.io/series/</loc>
-  </url><url>
-    <loc>https://harshalrathore.github.io/tags/</loc>
-  </url>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://harshalrathore.github.io/</loc>
+  <lastmod>2022-02-12T10:33:56+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://harshalrathore.github.io/about/</loc>
+  <lastmod>2022-02-12T10:33:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://harshalrathore.github.io/posts/</loc>
+  <lastmod>2022-02-12T10:33:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://harshalrathore.github.io/projects/</loc>
+  <lastmod>2022-02-12T10:33:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://harshalrathore.github.io/posts/git-for-beginners-by-me/</loc>
+  <lastmod>2022-02-12T10:33:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://harshalrathore.github.io/posts/linux-shell-guide/</loc>
+  <lastmod>2022-02-12T10:33:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
 </urlset>
