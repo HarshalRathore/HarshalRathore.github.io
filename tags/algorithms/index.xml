@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Algorithms on Harshal Rathore</title>
+    <link>https://harshalrathore.github.io/tags/algorithms/</link>
+    <description>Recent content in Algorithms on Harshal Rathore</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 15 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://harshalrathore.github.io/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linked Lists Unleashed: Mastering the Art of Dynamic Data Structures</title>
+      <link>https://harshalrathore.github.io/posts/linked-lists-unleashed-mastering-the-art-of-dynamic-data-structures/</link>
+      <pubDate>Sat, 15 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://harshalrathore.github.io/posts/linked-lists-unleashed-mastering-the-art-of-dynamic-data-structures/</guid>
+      <description>Content Limitation of Arrays Working of LinkedList Singly LinkedList Insertion in Singly LinkedList Display Singly LinkedList Deletion in Singly LinkedList Some Common Doubts Doubly LinkedList Insertion in Doubly LinkedList Display Doubly LinkedList Reversal of LinkedList Circular LinkedList Insertion in Circular LinkedList Display Circular LinkedList Deletion in Circular LinkedList Limitation of Arrays Arrays have a fixed size determined during their creation. Once the size is set, it cannot be easily changed.</description>
+    </item>
+    
+  </channel>
+</rss>

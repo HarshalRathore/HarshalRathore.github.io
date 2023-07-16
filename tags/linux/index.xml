@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on Harshal Rathore</title>
+    <link>https://harshalrathore.github.io/tags/linux/</link>
+    <description>Recent content in Linux on Harshal Rathore</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 15 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://harshalrathore.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux SHELL Guide</title>
+      <link>https://harshalrathore.github.io/posts/linux-shell-guide/</link>
+      <pubDate>Fri, 15 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://harshalrathore.github.io/posts/linux-shell-guide/</guid>
+      <description>Linux SHELL Guide Shows all hidden files and folders along with normal ones.
+1 ls -a list lot of information about non-hidden files and directories
+1 la -l list above info for hidden files and directories too
+1 ls -la OR ls -l -a to switch to a dir same as cd but it just saves the path from which you came
+1 pushd &amp;lt;path&amp;gt; to switch back to dir from which you came with pushd.</description>
+    </item>
+    
+  </channel>
+</rss>

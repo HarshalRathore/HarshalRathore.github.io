@@ -5,7 +5,43 @@
     <link>https://harshalrathore.github.io/</link>
     <description>Recent content on Harshal Rathore</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="https://harshalrathore.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Sat, 15 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://harshalrathore.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linked Lists Unleashed: Mastering the Art of Dynamic Data Structures</title>
+      <link>https://harshalrathore.github.io/posts/linked-lists-unleashed-mastering-the-art-of-dynamic-data-structures/</link>
+      <pubDate>Sat, 15 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://harshalrathore.github.io/posts/linked-lists-unleashed-mastering-the-art-of-dynamic-data-structures/</guid>
+      <description>Content Limitation of Arrays Working of LinkedList Singly LinkedList Insertion in Singly LinkedList Display Singly LinkedList Deletion in Singly LinkedList Some Common Doubts Doubly LinkedList Insertion in Doubly LinkedList Display Doubly LinkedList Reversal of LinkedList Circular LinkedList Insertion in Circular LinkedList Display Circular LinkedList Deletion in Circular LinkedList Limitation of Arrays Arrays have a fixed size determined during their creation. Once the size is set, it cannot be easily changed.</description>
+    </item>
+    
+    <item>
+      <title>Git for Beginners by Me</title>
+      <link>https://harshalrathore.github.io/posts/git-for-beginners-by-me/</link>
+      <pubDate>Wed, 05 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://harshalrathore.github.io/posts/git-for-beginners-by-me/</guid>
+      <description>Git for beginners by me Set git user info (assuming that you are the only user of this System)
+1 2 git config --global user.name &amp;lt;name&amp;gt; git config --global user.email &amp;lt;email&amp;gt; User info for a certain Repository only
+1 2 git congig user.name &amp;lt;name&amp;gt; git config user.email &amp;lt;email&amp;gt; Initialize git before using git commands
+1 git init Add files on staging area to be committed/Save
+1 2 git add &amp;lt;file_name&amp;gt; git add .</description>
+    </item>
+    
+    <item>
+      <title>Linux SHELL Guide</title>
+      <link>https://harshalrathore.github.io/posts/linux-shell-guide/</link>
+      <pubDate>Fri, 15 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://harshalrathore.github.io/posts/linux-shell-guide/</guid>
+      <description>Linux SHELL Guide Shows all hidden files and folders along with normal ones.
+1 ls -a list lot of information about non-hidden files and directories
+1 la -l list above info for hidden files and directories too
+1 ls -la OR ls -l -a to switch to a dir same as cd but it just saves the path from which you came
+1 pushd &amp;lt;path&amp;gt; to switch back to dir from which you came with pushd.</description>
+    </item>
+    
     <item>
       <title>About</title>
       <link>https://harshalrathore.github.io/about/</link>
@@ -14,33 +50,7 @@
       <guid>https://harshalrathore.github.io/about/</guid>
       <description>I am a Second year student pursuing Artificial Intelligence &amp;amp; Data Science @ SATI . I have a keen interest in Artificial Intelligence, Deep Learning.
 I am an aspiring Open Source enthusiast. Till now I have contributed to many small, big and intermediate projects either supporting with documentations of respective projects or with actual Code to the project.
-Skills    I am a passionate coder. I like to code because it developes your mind and enhances your problem solving skills.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://harshalrathore.github.io/posts/git-for-beginners-by-me/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://harshalrathore.github.io/posts/git-for-beginners-by-me/</guid>
-      <description>Git for beginners by me    Set git user info (assuming that you are the only user of this System)
-git config --global user.name &amp;lt;name&amp;gt; git config --global user.email &amp;lt;email&amp;gt; User info for a certain Repository only
-git congig user.name &amp;lt;name&amp;gt; git config user.email &amp;lt;email&amp;gt; Initialize git before using git commands
-git init Add files on staging area to be committed/Save
-git add &amp;lt;file_name&amp;gt; git add . (stages all the files all together) See current git status</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://harshalrathore.github.io/posts/linux-shell-guide/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://harshalrathore.github.io/posts/linux-shell-guide/</guid>
-      <description>Linux SHELL Guide    Shows all hidden files and folders along with normal ones.
-ls -a list lot of information about non-hidden files and directories
-la -l list above info for hidden files and directories too
-ls -la OR ls -l -a to switch to a dir same as cd but it just saves the path from which you came
-pushd &amp;lt;path&amp;gt; to switch back to dir from which you came with pushd.</description>
+Skills I am a passionate coder. I like to code because it developes your mind and enhances your problem solving skills.</description>
     </item>
     
     <item>
@@ -76,7 +86,7 @@ pushd &amp;lt;path&amp;gt; to switch back to dir from which you came with pushd.
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://harshalrathore.github.io/projects/</guid>
-      <description>Nothing to see here&amp;hellip; Move along!</description>
+      <description>[hello]</description>
     </item>
     
   </channel>

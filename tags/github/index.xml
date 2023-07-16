@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>github on Harshal Rathore</title>
+    <link>https://harshalrathore.github.io/tags/github/</link>
+    <description>Recent content in github on Harshal Rathore</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 05 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://harshalrathore.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git for Beginners by Me</title>
+      <link>https://harshalrathore.github.io/posts/git-for-beginners-by-me/</link>
+      <pubDate>Wed, 05 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://harshalrathore.github.io/posts/git-for-beginners-by-me/</guid>
+      <description>Git for beginners by me Set git user info (assuming that you are the only user of this System)
+1 2 git config --global user.name &amp;lt;name&amp;gt; git config --global user.email &amp;lt;email&amp;gt; User info for a certain Repository only
+1 2 git congig user.name &amp;lt;name&amp;gt; git config user.email &amp;lt;email&amp;gt; Initialize git before using git commands
+1 git init Add files on staging area to be committed/Save
+1 2 git add &amp;lt;file_name&amp;gt; git add .</description>
+    </item>
+    
+  </channel>
+</rss>
