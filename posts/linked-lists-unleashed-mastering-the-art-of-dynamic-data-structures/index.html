@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+
+    
+      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; block-all-mixed-content; default-src 'self'; child-src 'self'; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net/; form-action 'self'; frame-src 'self'; img-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/ https://cdn.jsdelivr.net/; script-src 'self' 'unsafe-inline' https://www.google-analytics.com; prefetch-src 'self'; connect-src 'self' https://www.google-analytics.com;">
+
+    
+
+    <meta name="author" content="Harshal Rathore">
+    <meta name="description" content="Learn git tips &amp; tricks ">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linked Lists Unleashed: Mastering the Art of Dynamic Data Structures"/>
+<meta name="twitter:description" content="Learn git tips &amp; tricks "/>
+
+    <meta property="og:title" content="Linked Lists Unleashed: Mastering the Art of Dynamic Data Structures" />
+<meta property="og:description" content="Learn git tips &amp; tricks " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://harshalrathore.github.io/posts/linked-lists-unleashed-mastering-the-art-of-dynamic-data-structures/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-07-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-07-15T00:00:00+00:00" />
+
+
+    <title>
+  Linked Lists Unleashed: Mastering the Art of Dynamic Data Structures · Harshal Rathore
+</title>
+
+    
+      <link rel="canonical" href="https://harshalrathore.github.io/posts/linked-lists-unleashed-mastering-the-art-of-dynamic-data-structures/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.d9fddbffe6f27e69985dc5fe0471cdb0e57fbf4775714bc3d847accb08f4a1f6.css" integrity="sha256-2f3b/&#43;byfmmYXcX&#43;BHHNsOV/v0d1cUvD2Eesywj0ofY=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.002ee2378e14c7a68f1f0a53d9694ed252090987c4e768023fac694a4fc5f793.css" integrity="sha256-AC7iN44Ux6aPHwpT2WlO0lIJCYfE52gCP6xpSk/F95M=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.112.3">
+  </head>
+
+  
+  
+    
+  
+  <body class="preload-transitions colorscheme-dark">
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      Harshal Rathore
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/projects/">Projects</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://harshalrathore.github.io/posts/linked-lists-unleashed-mastering-the-art-of-dynamic-data-structures/">
+              Linked Lists Unleashed: Mastering the Art of Dynamic Data Structures
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2023-07-15T00:00:00Z'>
+                July 15, 2023
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              26-minute read
+            </span>
+          </div>
+          <div class="authors">
+  <i class="fa fa-user" aria-hidden="true"></i>
+    <a href="/authors/harshal-rathore/">Harshal Rathore</a></div>
+
+          
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/dsa/">DSA</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/linkedlist/">LinkedList</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/algorithms/">Algorithms</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h1 id="content">
+  Content
+  <a class="heading-link" href="#content">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h1>
+<ul>
+<li><a href="#limitation-of-arrays">Limitation of Arrays</a></li>
+<li><a href="#working-of-linkedlist">Working of LinkedList</a></li>
+<li><a href="#singly-linkedlist">Singly LinkedList</a>
+<ul>
+<li><a href="#insertion-in-singly-linkedlist">Insertion in Singly LinkedList</a></li>
+<li><a href="#display-singly-linkedlist">Display Singly LinkedList</a></li>
+<li><a href="#deletion-in-singly-linkedlist">Deletion in Singly LinkedList</a></li>
+</ul>
+</li>
+<li><a href="#some-common-doubts">Some Common Doubts</a></li>
+<li><a href="#doubly-linkedlist">Doubly LinkedList</a>
+<ul>
+<li><a href="#insertion-in-doubly-linkedlist">Insertion in Doubly LinkedList</a></li>
+<li><a href="#display-doubly-linkedlist">Display Doubly LinkedList</a></li>
+</ul>
+</li>
+<li><a href="#reversal-of-linkedlist">Reversal of LinkedList</a></li>
+<li><a href="#circular-linkedlist">Circular LinkedList</a>
+<ul>
+<li><a href="#insertion-in-circular-linkedlist">Insertion in Circular LinkedList</a></li>
+<li><a href="#display-circular-linkedlist">Display Circular LinkedList</a></li>
+<li><a href="#deletion-in-circular-linkedlist">Deletion in Circular LinkedList</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="limitation-of-arrays">
+  Limitation of Arrays
+  <a class="heading-link" href="#limitation-of-arrays">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>Arrays have a fixed size determined during their creation. Once the size is set, it cannot be easily changed. This limitation can cause problems when you need to store a variable number of elements or when you don&rsquo;t know the exact size of the data beforehand.</p>
+<p>When using arrays, you may encounter the following issues:</p>
+<ul>
+<li>Fixed Size: Arrays have a fixed size that needs to be declared in advance. If you exceed the allocated size, you may encounter buffer overflow errors or data loss.</li>
+<li>Memory Wastage: If you allocate a large size for an array but only use a small portion of it, the remaining memory goes unused, resulting in memory wastage.</li>
+<li>Insertion and Deletion: Inserting or deleting an element in an array requires shifting elements to accommodate the change. This operation can be time-consuming, especially for large arrays or when elements need to be inserted or deleted frequently.</li>
+<li>Contiguous Memory: Arrays need contiguous memory locations to store elements. In situations where contiguous memory is not available, arrays cannot be used efficiently.</li>
+</ul>
+<p>Now, let&rsquo;s move on to the working of a linked list.</p>
+<h2 id="working-of-linkedlist">
+  Working of LinkedList
+  <a class="heading-link" href="#working-of-linkedlist">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>A linked list is a data structure that consists of a sequence of nodes, where each node contains a data element and a reference (or link) to the next node in the sequence. The last node&rsquo;s reference is typically set to nullptr (or null in some languages) to indicate the end of the list.</p>
+<p>Unlike arrays, linked lists do not require contiguous memory allocation, and their size can dynamically change during program execution. Each node in a linked list contains two components: the data and the link.</p>
+<p>The link (or pointer) points to the next node in the sequence. This linking mechanism allows traversing the entire list by following the links from one node to another.</p>
+<p>Linked lists offer flexibility in terms of insertion and deletion, as these operations can be performed without shifting other elements. However, accessing an element at a specific index in a linked list requires traversing the list from the beginning until reaching the desired index.</p>
+<h2 id="singly-linkedlist">
+  Singly LinkedList
+  <a class="heading-link" href="#singly-linkedlist">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>A singly linked list is the simplest form of a linked list. Each node in a singly linked list contains a data element and a link to the next node. The last node&rsquo;s link points to nullptr (or null in some languages) to indicate the end of the list.</p>
+<p>Here&rsquo;s an example of a Node structure for a singly linked list in C++:</p>
+<div class="highlight"><div style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#cba6f7">struct</span> <span style="color:#f9e2af">Node</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f9e2af">int</span> <span style="color:#b4befe">data</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">next</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#cdd6f4">};</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>In the above structure, data represents the data stored in the node, and next is a pointer to the next node in the list.</p>
+<p>To visualize a singly linked list, consider the following example:
+<div class="highlight"><pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>List:  [data1] -&gt; [data2] -&gt; [data3] -&gt; nullptr</span></span></code></pre></div></p>
+<p>In the above example, each node contains a data element, and the arrow indicates the link from one node to another. The last node&rsquo;s link points to nullptr, indicating the end of the list.</p>
+<h3 id="insertion-in-singly-linkedlist">
+  Insertion in Singly LinkedList
+  <a class="heading-link" href="#insertion-in-singly-linkedlist">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>To insert a new node in a singly linked list, you need to consider two scenarios: inserting at the beginning and inserting at the end or in the middle of the list.</p>
+<ol>
+<li>Insertion at the Beginning</li>
+</ol>
+<p>To insert a new node at the beginning of a singly linked list, follow these steps:</p>
+<ul>
+<li>Create a new node and allocate memory for it.</li>
+<li>Set the data of the new node to the desired value.</li>
+<li>Set the next pointer of the new node to the current first node.</li>
+<li>Update the head pointer to point to the new node.</li>
+</ul>
+<p>Here&rsquo;s an example implementation in C++:</p>
+<div class="highlight"><div style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#f9e2af">void</span> <span style="color:#89dceb">insertAtBeginning</span><span style="color:#cdd6f4">(</span><span style="color:#b4befe">Node</span><span style="color:#89dceb">**</span> <span style="color:#b4befe">head</span><span style="color:#cdd6f4">,</span> <span style="color:#f9e2af">int</span> <span style="color:#b4befe">data</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Create a new node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">newNode</span> <span style="color:#89dceb">=</span> <span style="color:#cba6f7">new</span> <span style="color:#b4befe">Node</span><span style="color:#cdd6f4">();</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Set the data of the new node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">newNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">data</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">data</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Set the next pointer of the new node to the current first node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">newNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">=</span> <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Update the head pointer
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">newNode</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#cdd6f4">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<ol start="2">
+<li>Insertion at the End or in the Middle:</li>
+</ol>
+<p>To insert a new node at the end or in the middle of a singly linked list, you need to traverse the list until you reach the desired position. Follow these steps:</p>
+<ul>
+<li>Create a new node and allocate memory for it.</li>
+<li>Set the data of the new node to the desired value.</li>
+<li>Traverse the list until you reach the desired position.</li>
+<li>Update the next pointers accordingly to insert the new node.</li>
+</ul>
+<p>Here&rsquo;s an example implementation in C++ for inserting at the end:
+<div class="highlight"><div style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">25
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#f9e2af">void</span> <span style="color:#89dceb">insertAtEnd</span><span style="color:#cdd6f4">(</span><span style="color:#b4befe">Node</span><span style="color:#89dceb">**</span> <span style="color:#b4befe">head</span><span style="color:#cdd6f4">,</span> <span style="color:#f9e2af">int</span> <span style="color:#b4befe">data</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Create a new node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">newNode</span> <span style="color:#89dceb">=</span> <span style="color:#cba6f7">new</span> <span style="color:#b4befe">Node</span><span style="color:#cdd6f4">();</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Set the data of the new node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">newNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">data</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">data</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Set the next pointer of the new node to nullptr
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">newNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">=</span> <span style="color:#cba6f7">nullptr</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// If the list is empty, make the new node the head
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#cba6f7">if</span> <span style="color:#cdd6f4">(</span><span style="color:#89dceb">*</span><span style="color:#b4befe">head</span> <span style="color:#89dceb">==</span> <span style="color:#cba6f7">nullptr</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">newNode</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cba6f7">return</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Traverse to the last node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">current</span> <span style="color:#89dceb">=</span> <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cba6f7">while</span> <span style="color:#cdd6f4">(</span><span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">!=</span> <span style="color:#cba6f7">nullptr</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">current</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Update the next pointer of the last node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">newNode</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#cdd6f4">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+These are the basic operations for inserting nodes in a singly linked list. You can adapt these operations to insert nodes at specific positions as well.</p>
+<h3 id="display-singly-linkedlist">
+  Display Singly LinkedList
+  <a class="heading-link" href="#display-singly-linkedlist">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>To display the elements of a singly linked list, you can traverse the list starting from the head node and print the data of each node until you reach the end of the list.</p>
+<p>Here&rsquo;s an example implementation in C++:
+<div class="highlight"><div style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#f9e2af">void</span> <span style="color:#89dceb">displayLinkedList</span><span style="color:#cdd6f4">(</span><span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">head</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Traverse the list and print each node&#39;s data
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">current</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">head</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cba6f7">while</span> <span style="color:#cdd6f4">(</span><span style="color:#b4befe">current</span> <span style="color:#89dceb">!=</span> <span style="color:#cba6f7">nullptr</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">cout</span> <span style="color:#89dceb">&lt;&lt;</span> <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">data</span> <span style="color:#89dceb">&lt;&lt;</span> <span style="color:#a6e3a1">&#34; &#34;</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">current</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#b4befe">cout</span> <span style="color:#89dceb">&lt;&lt;</span> <span style="color:#b4befe">endl</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#cdd6f4">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>In the above code, we start with the head node and print the data of each node until we reach the end of the list (i.e., when the next pointer becomes nullptr).</p>
+<p>Now that we&rsquo;ve covered insertion and display in a singly linked list, let&rsquo;s move on to deletion in a singly linked list.</p>
+<h3 id="deletion-in-singly-linkedlist">
+  Deletion in Singly LinkedList
+  <a class="heading-link" href="#deletion-in-singly-linkedlist">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>To delete a node from a singly linked list, you need to consider two scenarios: deleting the first node and deleting a node in the middle or at the end of the list.</p>
+<ol>
+<li>Deletion of the First Node:</li>
+</ol>
+<p>To delete the first node of a singly linked list, follow these steps:</p>
+<ul>
+<li>Check if the list is empty. If it is, there&rsquo;s nothing to delete.</li>
+<li>Update the head pointer to point to the next node.</li>
+<li>Free the memory allocated to the deleted node.
+Here&rsquo;s an example implementation in C++:</li>
+</ul>
+<div class="highlight"><div style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#f9e2af">void</span> <span style="color:#89dceb">deleteFirstNode</span><span style="color:#cdd6f4">(</span><span style="color:#b4befe">Node</span><span style="color:#89dceb">**</span> <span style="color:#b4befe">head</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cba6f7">if</span> <span style="color:#cdd6f4">(</span><span style="color:#89dceb">*</span><span style="color:#b4befe">head</span> <span style="color:#89dceb">==</span> <span style="color:#cba6f7">nullptr</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">cout</span> <span style="color:#89dceb">&lt;&lt;</span> <span style="color:#a6e3a1">&#34;List is empty. Nothing to delete.&#34;</span> <span style="color:#89dceb">&lt;&lt;</span> <span style="color:#b4befe">endl</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cba6f7">return</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Store the reference to the first node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">temp</span> <span style="color:#89dceb">=</span> <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Update the head pointer to the next node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span> <span style="color:#89dceb">=</span> <span style="color:#cdd6f4">(</span><span style="color:#89dceb">*</span><span style="color:#b4befe">head</span><span style="color:#cdd6f4">)</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Free the memory of the deleted node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#cba6f7">delete</span> <span style="color:#b4befe">temp</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#cdd6f4">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<ol start="2">
+<li>Deletion of a Node in the Middle or at the End:</li>
+</ol>
+<p>To delete a node in the middle or at the end of a singly linked list, you need to traverse the list until you reach the node to be deleted. Follow these steps:</p>
+<ul>
+<li>Check if the list is empty. If it is, there&rsquo;s nothing to delete.</li>
+<li>Traverse the list until you find the node to be deleted and its previous node.</li>
+<li>Update the next pointer of the previous node to skip the node to be deleted.</li>
+<li>Free the memory allocated to the deleted node.</li>
+</ul>
+<p>Here&rsquo;s an example implementation in C++ for deleting a node with a given value:</p>
+<p><div class="highlight"><div style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">32
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#f9e2af">void</span> <span style="color:#89dceb">deleteNodeWithValue</span><span style="color:#cdd6f4">(</span><span style="color:#b4befe">Node</span><span style="color:#89dceb">**</span> <span style="color:#b4befe">head</span><span style="color:#cdd6f4">,</span> <span style="color:#f9e2af">int</span> <span style="color:#b4befe">value</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cba6f7">if</span> <span style="color:#cdd6f4">(</span><span style="color:#89dceb">*</span><span style="color:#b4befe">head</span> <span style="color:#89dceb">==</span> <span style="color:#cba6f7">nullptr</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">cout</span> <span style="color:#89dceb">&lt;&lt;</span> <span style="color:#a6e3a1">&#34;List is empty. Nothing to delete.&#34;</span> <span style="color:#89dceb">&lt;&lt;</span> <span style="color:#b4befe">endl</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cba6f7">return</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">current</span> <span style="color:#89dceb">=</span> <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">previous</span> <span style="color:#89dceb">=</span> <span style="color:#cba6f7">nullptr</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Traverse until the node to be deleted is found
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#cba6f7">while</span> <span style="color:#cdd6f4">(</span><span style="color:#b4befe">current</span> <span style="color:#89dceb">!=</span> <span style="color:#cba6f7">nullptr</span> <span style="color:#89dceb">&amp;&amp;</span> <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">data</span> <span style="color:#89dceb">!=</span> <span style="color:#b4befe">value</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">previous</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">current</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">current</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// If the node was not found
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#cba6f7">if</span> <span style="color:#cdd6f4">(</span><span style="color:#b4befe">current</span> <span style="color:#89dceb">==</span> <span style="color:#cba6f7">nullptr</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">cout</span> <span style="color:#89dceb">&lt;&lt;</span> <span style="color:#a6e3a1">&#34;Node not found in the list.&#34;</span> <span style="color:#89dceb">&lt;&lt;</span> <span style="color:#b4befe">endl</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cba6f7">return</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Update the next pointer of the previous node to skip the node to be deleted
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#cba6f7">if</span> <span style="color:#cdd6f4">(</span><span style="color:#b4befe">previous</span> <span style="color:#89dceb">!=</span> <span style="color:#cba6f7">nullptr</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">previous</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span> <span style="color:#cba6f7">else</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#585b70;font-style:italic">// If the node to be deleted is the first node, update the head pointer
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>        <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Free the memory of the deleted node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#cba6f7">delete</span> <span style="color:#b4befe">current</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#cdd6f4">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+These are the basic operations for deleting nodes in a singly linked list. You can adapt these operations to delete nodes at specific positions as well.</p>
+<p>Now, let&rsquo;s address some common doubts you might have before moving on to the next topic.</p>
+<h2 id="some-common-doubts">
+  Some Common Doubts
+  <a class="heading-link" href="#some-common-doubts">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<ol>
+<li>
+<p><strong>Q: How can I access an element at a specific index in a singly linked list?</strong></p>
+<p>A: Unlike arrays, accessing an element at a specific index in a singly linked list requires traversing the list from the beginning until you reach the desired index. Start with the head node and follow the next pointers until you reach the desired position.</p>
+</li>
+<li>
+<p><strong>Q: Can a singly linked list contain duplicate values?</strong></p>
+<p>A: Yes, a singly linked list can contain duplicate values. Each node in the list holds its own data value, so it is possible to have multiple nodes with the same data.</p>
+</li>
+<li>
+<p><strong>Q: How do I find the length of a singly linked list?</strong></p>
+<p>A: To find the length of a singly linked list, traverse the list from the head node while keeping a count of the number of nodes visited. Increment the count for each node until you reach the end of the list.</p>
+</li>
+<li>
+<p><strong>Q: Can I delete multiple nodes with the same value in a singly linked list?</strong></p>
+<p>A: Yes, you can delete multiple nodes with the same value in a singly linked list. To do so, continue traversing the list and deleting nodes with the desired value until no more occurrences are found.</p>
+</li>
+<li>
+<p><strong>Q: What happens to the memory of a deleted node in a singly linked list?</strong></p>
+<p>A: When a node is deleted from a singly linked list, the memory allocated to that node is freed. It can be reused for other purposes.</p>
+</li>
+</ol>
+<p>These are some common doubts that beginners often have regarding singly linked lists. If you have any more specific questions or doubts, feel free to ask in the comment section.</p>
+<p>Now, let&rsquo;s move on to the next topic: doubly linked lists.</p>
+<h2 id="doubly-linkedlist">
+  Doubly LinkedList
+  <a class="heading-link" href="#doubly-linkedlist">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>A doubly linked list is a type of linked list where each node contains a data element, a pointer to the next node, and a pointer to the previous node. This bidirectional linking allows traversal in both forward and backward directions.</p>
+<p>Here&rsquo;s an example of a Node structure for a doubly linked list in C++:
+<div class="highlight"><div style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#cba6f7">struct</span> <span style="color:#f9e2af">Node</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f9e2af">int</span> <span style="color:#b4befe">data</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">next</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">prev</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#cdd6f4">};</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>In the above structure, data represents the data stored in the node, next is a pointer to the next node, and prev is a pointer to the previous node.</p>
+<p>To visualize a doubly linked list, consider the following example:
+<div class="highlight"><pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>List:  nullptr &lt;- [data1] &lt;-&gt; [data2] &lt;-&gt; [data3] -&gt; nullptr</span></span></code></pre></div></p>
+<p>In the above example, each node contains a data element, and the double arrows indicate the bidirectional links between nodes. The prev pointer of the first node and the next pointer of the last node are set to nullptr to indicate the beginning and end of the list, respectively.</p>
+<p>Doubly linked lists provide more flexibility compared to singly linked lists. They allow efficient traversal in both directions but require additional memory to store the prev pointers.</p>
+<p>Next, let&rsquo;s explore insertion in a doubly linked list.</p>
+<h3 id="insertion-in-doubly-linkedlist">
+  Insertion in Doubly LinkedList
+  <a class="heading-link" href="#insertion-in-doubly-linkedlist">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>Insertion in a doubly linked list can be performed in a similar manner to a singly linked list. You need to consider three scenarios: inserting at the beginning, inserting at the end, and inserting in the middle of the list.</p>
+<ol>
+<li>Insertion at the Beginning:</li>
+</ol>
+<p>To insert a new node at the beginning of a doubly linked list, follow these steps:</p>
+<ul>
+<li>Create a new node and allocate memory for it.</li>
+<li>Set the data of the new node to the desired value.</li>
+<li>Set the next pointer of the new node to the current first node.</li>
+<li>Set the prev pointer of the new node to nullptr.</li>
+<li>Update the prev pointer of the current first node to point to the new node.</li>
+<li>Update the head pointer to point to the new node.</li>
+</ul>
+<p>Here&rsquo;s an example implementation in C++:</p>
+<div class="highlight"><div style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">21
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#f9e2af">void</span> <span style="color:#89dceb">insertAtBeginning</span><span style="color:#cdd6f4">(</span><span style="color:#b4befe">Node</span><span style="color:#89dceb">**</span> <span style="color:#b4befe">head</span><span style="color:#cdd6f4">,</span> <span style="color:#f9e2af">int</span> <span style="color:#b4befe">data</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Create a new node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">newNode</span> <span style="color:#89dceb">=</span> <span style="color:#cba6f7">new</span> <span style="color:#b4befe">Node</span><span style="color:#cdd6f4">();</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Set the data of the new node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">newNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">data</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">data</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Set the next pointer of the new node to the current first node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">newNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">=</span> <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Set the prev pointer of the new node to nullptr
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">newNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">prev</span> <span style="color:#89dceb">=</span> <span style="color:#cba6f7">nullptr</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Update the prev pointer of the current first node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#cba6f7">if</span> <span style="color:#cdd6f4">(</span><span style="color:#89dceb">*</span><span style="color:#b4befe">head</span> <span style="color:#89dceb">!=</span> <span style="color:#cba6f7">nullptr</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cdd6f4">(</span><span style="color:#89dceb">*</span><span style="color:#b4befe">head</span><span style="color:#cdd6f4">)</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">prev</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">newNode</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Update the head pointer
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">newNode</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#cdd6f4">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<ol start="2">
+<li>Insertion at the End:</li>
+</ol>
+<p>To insert a new node at the end of a doubly linked list, follow these steps:</p>
+<ul>
+<li>Create a new node and allocate memory for it.</li>
+<li>Set the data of the new node to the desired value.</li>
+<li>Set the next pointer of the new node to nullptr.</li>
+<li>Traverse the list until you reach the last node.</li>
+<li>Set the next pointer of the last node to the new node.</li>
+<li>Set the prev pointer of the new node to the last node.</li>
+</ul>
+<p>Here&rsquo;s an example implementation in C++:</p>
+<div class="highlight"><div style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">27
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#f9e2af">void</span> <span style="color:#89dceb">insertAtEnd</span><span style="color:#cdd6f4">(</span><span style="color:#b4befe">Node</span><span style="color:#89dceb">**</span> <span style="color:#b4befe">head</span><span style="color:#cdd6f4">,</span> <span style="color:#f9e2af">int</span> <span style="color:#b4befe">data</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Create a new node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">newNode</span> <span style="color:#89dceb">=</span> <span style="color:#cba6f7">new</span> <span style="color:#b4befe">Node</span><span style="color:#cdd6f4">();</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Set the data of the new node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">newNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">data</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">data</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Set the next pointer of the new node to nullptr
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">newNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">=</span> <span style="color:#cba6f7">nullptr</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// If the list is empty, make the new node the head
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#cba6f7">if</span> <span style="color:#cdd6f4">(</span><span style="color:#89dceb">*</span><span style="color:#b4befe">head</span> <span style="color:#89dceb">==</span> <span style="color:#cba6f7">nullptr</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">newNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">prev</span> <span style="color:#89dceb">=</span> <span style="color:#cba6f7">nullptr</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">newNode</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cba6f7">return</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Traverse to the last node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">current</span> <span style="color:#89dceb">=</span> <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cba6f7">while</span> <span style="color:#cdd6f4">(</span><span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">!=</span> <span style="color:#cba6f7">nullptr</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">current</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Update the next pointer of the last node and the prev pointer of the new node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">newNode</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#b4befe">newNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">prev</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">current</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#cdd6f4">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<ol start="3">
+<li>Insertion in the Middle:</li>
+</ol>
+<p>To insert a new node in the middle of a doubly linked list, follow these steps:</p>
+<ul>
+<li>Create a new node and allocate memory for it.</li>
+<li>Set the data of the new node to the desired value.</li>
+<li>Traverse the list until you reach the desired position.</li>
+<li>Set the next pointer of the new node to the next node.</li>
+<li>Set the prev pointer of the new node to the current node.</li>
+<li>Update the next pointer of the current node to point to the new node.</li>
+<li>Update the prev pointer of the next node to point to the new node.</li>
+</ul>
+<p>Here&rsquo;s an example implementation in C++:</p>
+<div class="highlight"><div style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">25
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#f9e2af">void</span> <span style="color:#89dceb">insertInMiddle</span><span style="color:#cdd6f4">(</span><span style="color:#b4befe">Node</span><span style="color:#89dceb">**</span> <span style="color:#b4befe">head</span><span style="color:#cdd6f4">,</span> <span style="color:#f9e2af">int</span> <span style="color:#b4befe">data</span><span style="color:#cdd6f4">,</span> <span style="color:#f9e2af">int</span> <span style="color:#b4befe">position</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Create a new node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">newNode</span> <span style="color:#89dceb">=</span> <span style="color:#cba6f7">new</span> <span style="color:#b4befe">Node</span><span style="color:#cdd6f4">();</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Set the data of the new node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">newNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">data</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">data</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Traverse to the desired position
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">current</span> <span style="color:#89dceb">=</span> <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f9e2af">int</span> <span style="color:#b4befe">currentPosition</span> <span style="color:#89dceb">=</span> 1<span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cba6f7">while</span> <span style="color:#cdd6f4">(</span><span style="color:#b4befe">currentPosition</span> <span style="color:#89dceb">&lt;</span> <span style="color:#b4befe">position</span> <span style="color:#89dceb">&amp;&amp;</span> <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">!=</span> <span style="color:#cba6f7">nullptr</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">current</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">currentPosition</span><span style="color:#89dceb">++</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Update the next pointer of the new node and the prev pointer of the next node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">newNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#b4befe">newNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">prev</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">current</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Update the next pointer of the current node and the prev pointer of the next node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#cba6f7">if</span> <span style="color:#cdd6f4">(</span><span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">!=</span> <span style="color:#cba6f7">nullptr</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">prev</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">newNode</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">newNode</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#cdd6f4">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>These are the basic operations for inserting nodes in a doubly linked list. You can adapt these operations to insert nodes at specific positions as well.</p>
+<p>Now, let&rsquo;s move on to displaying the elements of a doubly linked list.</p>
+<h3 id="display-doubly-linkedlist">
+  Display Doubly LinkedList
+  <a class="heading-link" href="#display-doubly-linkedlist">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>To display the elements of a doubly linked list, you can traverse the list in either the forward or backward direction, printing the data of each node as you go.</p>
+<p>Here&rsquo;s an example implementation in C++ for displaying a doubly linked list in the forward direction:</p>
+<div class="highlight"><div style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#f9e2af">void</span> <span style="color:#89dceb">displayForward</span><span style="color:#cdd6f4">(</span><span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">head</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Traverse the list and print each node&#39;s data
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">current</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">head</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cba6f7">while</span> <span style="color:#cdd6f4">(</span><span style="color:#b4befe">current</span> <span style="color:#89dceb">!=</span> <span style="color:#cba6f7">nullptr</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">cout</span> <span style="color:#89dceb">&lt;&lt;</span> <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">data</span> <span style="color:#89dceb">&lt;&lt;</span> <span style="color:#a6e3a1">&#34; &#34;</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">current</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#b4befe">cout</span> <span style="color:#89dceb">&lt;&lt;</span> <span style="color:#b4befe">endl</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#cdd6f4">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>And here&rsquo;s an example implementation in C++ for displaying a doubly linked list in the backward direction:</p>
+<div class="highlight"><div style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#f9e2af">void</span> <span style="color:#89dceb">displayBackward</span><span style="color:#cdd6f4">(</span><span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">tail</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Traverse the list in reverse and print each node&#39;s data
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">current</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">tail</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cba6f7">while</span> <span style="color:#cdd6f4">(</span><span style="color:#b4befe">current</span> <span style="color:#89dceb">!=</span> <span style="color:#cba6f7">nullptr</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">cout</span> <span style="color:#89dceb">&lt;&lt;</span> <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">data</span> <span style="color:#89dceb">&lt;&lt;</span> <span style="color:#a6e3a1">&#34; &#34;</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">current</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">prev</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#b4befe">cout</span> <span style="color:#89dceb">&lt;&lt;</span> <span style="color:#b4befe">endl</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#cdd6f4">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>In the above code, we start with either the head node (for forward traversal) or the tail node (for backward traversal) and print the data of each node until we reach the end of the list.</p>
+<p>These display functions allow you to visualize the elements stored in a doubly linked list in both the forward and backward directions.</p>
+<p>Now that we&rsquo;ve covered doubly linked lists, let&rsquo;s move on to the topic of reversing a linked list.</p>
+<h2 id="reversal-of-linkedlist">
+  Reversal of LinkedList:
+  <a class="heading-link" href="#reversal-of-linkedlist">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>Reversing a linked list involves changing the direction of the links between the nodes, effectively flipping the list in the opposite direction.</p>
+<p>To reverse a singly linked list, you need to modify the links between the nodes. Follow these steps:</p>
+<ul>
+<li>Initialize three pointers: previous (initialized as nullptr), current (initialized as the head), and next (initialized as nullptr).</li>
+<li>Traverse the list while updating the links:</li>
+<li>Set next to the node following current.</li>
+<li>Update the next pointer of current to point to previous.</li>
+<li>Move previous to current and current to next.</li>
+<li>Update the head pointer to point to the new first node (which was the last node in the original list).</li>
+</ul>
+<p>Here&rsquo;s an example implementation in C++ for reversing a singly linked list:</p>
+<div class="highlight"><div style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#f9e2af">void</span> <span style="color:#89dceb">reverseLinkedList</span><span style="color:#cdd6f4">(</span><span style="color:#b4befe">Node</span><span style="color:#89dceb">**</span> <span style="color:#b4befe">head</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">previous</span> <span style="color:#89dceb">=</span> <span style="color:#cba6f7">nullptr</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">current</span> <span style="color:#89dceb">=</span> <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">next</span> <span style="color:#89dceb">=</span> <span style="color:#cba6f7">nullptr</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#cba6f7">while</span> <span style="color:#cdd6f4">(</span><span style="color:#b4befe">current</span> <span style="color:#89dceb">!=</span> <span style="color:#cba6f7">nullptr</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">next</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">previous</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">previous</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">current</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">current</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">next</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">previous</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#cdd6f4">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>After reversing the linked list, the new head becomes the previous tail, and the new tail becomes the previous head.</p>
+<p>Next, let&rsquo;s explore the concept of a circular linked list.</p>
+<h2 id="circular-linkedlist">
+  Circular LinkedList:
+  <a class="heading-link" href="#circular-linkedlist">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>A circular linked list is a type of linked list where the last node&rsquo;s next pointer does not point to nullptr but instead points back to the first node, forming a circular structure.</p>
+<p>Here&rsquo;s an example of a circular linked list:</p>
+<div class="highlight"><div style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>List:  [data1] -&gt; [data2] -&gt; [data3] -&gt; ... -&gt; [dataN] -&gt;
+</span></span><span style="display:flex;"><span>                                               ^        |
+</span></span><span style="display:flex;"><span>                                               |        v
+</span></span><span style="display:flex;"><span>                                             &lt;- [data1] &lt;-</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>In the above example, the last node&rsquo;s next pointer points back to the first node, creating a loop that allows for continuous traversal.</p>
+<p>The circular linked list can be either singly or doubly linked, depending on whether the nodes have a single or double link.</p>
+<p>Now, let&rsquo;s explore insertion in a circular linked list.</p>
+<h3 id="insertion-in-circular-linkedlist">
+  Insertion in Circular LinkedList:
+  <a class="heading-link" href="#insertion-in-circular-linkedlist">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>To insert a new node into a circular linked list, you need to consider three scenarios: inserting at the beginning, inserting at the end, and inserting in the middle of the list.</p>
+<ol>
+<li>Insertion at the Beginning:</li>
+</ol>
+<p>To insert a new node at the beginning of a circular linked list, follow these steps:</p>
+<ul>
+<li>Create a new node and allocate memory for it.</li>
+<li>Set the data of the new node to the desired value.</li>
+<li>If the list is empty, set the next pointer of the new node to itself.</li>
+<li>If the list is not empty, set the next pointer of the new node to the current first node.</li>
+<li>Update the next pointer of the last node to point to the new node.</li>
+<li>Update the head pointer to point to the new node.</li>
+</ul>
+<p>Here&rsquo;s an example implementation in C++:</p>
+<div class="highlight"><div style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">27
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#f9e2af">void</span> <span style="color:#89dceb">insertAtBeginning</span><span style="color:#cdd6f4">(</span><span style="color:#b4befe">Node</span><span style="color:#89dceb">**</span> <span style="color:#b4befe">head</span><span style="color:#cdd6f4">,</span> <span style="color:#f9e2af">int</span> <span style="color:#b4befe">data</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Create a new node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">newNode</span> <span style="color:#89dceb">=</span> <span style="color:#cba6f7">new</span> <span style="color:#b4befe">Node</span><span style="color:#cdd6f4">();</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Set the data of the new node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">newNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">data</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">data</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// If the list is empty, make the new node point to itself
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#cba6f7">if</span> <span style="color:#cdd6f4">(</span><span style="color:#89dceb">*</span><span style="color:#b4befe">head</span> <span style="color:#89dceb">==</span> <span style="color:#cba6f7">nullptr</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">newNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">newNode</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span> <span style="color:#cba6f7">else</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#585b70;font-style:italic">// Set the next pointer of the new node to the current first node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>        <span style="color:#b4befe">newNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">=</span> <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#585b70;font-style:italic">// Traverse to the last node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>        <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">current</span> <span style="color:#89dceb">=</span> <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cba6f7">while</span> <span style="color:#cdd6f4">(</span><span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">!=</span> <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#b4befe">current</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cdd6f4">}</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#585b70;font-style:italic">// Update the next pointer of the last node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>        <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">newNode</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Update the head pointer
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">newNode</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#cdd6f4">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<ol start="2">
+<li>Insertion at the End:</li>
+</ol>
+<p>To insert a new node at the end of a circular linked list, follow these steps:</p>
+<ul>
+<li>Create a new node and allocate memory for it.</li>
+<li>Set the data of the new node to the desired value.</li>
+<li>If the list is empty, make the new node point to itself.</li>
+<li>If the list is not empty, traverse to the last node.</li>
+<li>Set the next pointer of the new node to the current first node.</li>
+<li>Update the next pointer of the last node to point to the new node.</li>
+</ul>
+<p>Here&rsquo;s an example implementation in C++:</p>
+<div class="highlight"><div style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">27
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#f9e2af">void</span> <span style="color:#89dceb">insertAtEnd</span><span style="color:#cdd6f4">(</span><span style="color:#b4befe">Node</span><span style="color:#89dceb">**</span> <span style="color:#b4befe">head</span><span style="color:#cdd6f4">,</span> <span style="color:#f9e2af">int</span> <span style="color:#b4befe">data</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Create a new node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">newNode</span> <span style="color:#89dceb">=</span> <span style="color:#cba6f7">new</span> <span style="color:#b4befe">Node</span><span style="color:#cdd6f4">();</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Set the data of the new node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">newNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">data</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">data</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// If the list is empty, make the new node point to itself
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#cba6f7">if</span> <span style="color:#cdd6f4">(</span><span style="color:#89dceb">*</span><span style="color:#b4befe">head</span> <span style="color:#89dceb">==</span> <span style="color:#cba6f7">nullptr</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">newNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">newNode</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span> <span style="color:#cba6f7">else</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#585b70;font-style:italic">// Traverse to the last node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>        <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">current</span> <span style="color:#89dceb">=</span> <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cba6f7">while</span> <span style="color:#cdd6f4">(</span><span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">!=</span> <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#b4befe">current</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cdd6f4">}</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#585b70;font-style:italic">// Set the next pointer of the new node to the current first node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>        <span style="color:#b4befe">newNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">=</span> <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#585b70;font-style:italic">// Update the next pointer of the last node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>        <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">newNode</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Update the head pointer
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">newNode</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#cdd6f4">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<ol start="3">
+<li>Insertion in the Middle:</li>
+</ol>
+<p>To insert a new node in the middle of a circular linked list, follow these steps:</p>
+<ul>
+<li>Create a new node and allocate memory for it.</li>
+<li>Set the data of the new node to the desired value.</li>
+<li>Traverse the list until you reach the desired position.</li>
+<li>Set the next pointer of the new node to the next node.</li>
+<li>Update the next pointer of the current node to point to the new node.</li>
+</ul>
+<p>Here&rsquo;s an example implementation in C++:</p>
+<div class="highlight"><div style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">21
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#f9e2af">void</span> <span style="color:#89dceb">insertInMiddle</span><span style="color:#cdd6f4">(</span><span style="color:#b4befe">Node</span><span style="color:#89dceb">**</span> <span style="color:#b4befe">head</span><span style="color:#cdd6f4">,</span> <span style="color:#f9e2af">int</span> <span style="color:#b4befe">data</span><span style="color:#cdd6f4">,</span> <span style="color:#f9e2af">int</span> <span style="color:#b4befe">position</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Create a new node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">newNode</span> <span style="color:#89dceb">=</span> <span style="color:#cba6f7">new</span> <span style="color:#b4befe">Node</span><span style="color:#cdd6f4">();</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Set the data of the new node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">newNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">data</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">data</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Traverse to the desired position
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">current</span> <span style="color:#89dceb">=</span> <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f9e2af">int</span> <span style="color:#b4befe">currentPosition</span> <span style="color:#89dceb">=</span> 1<span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cba6f7">while</span> <span style="color:#cdd6f4">(</span><span style="color:#b4befe">currentPosition</span> <span style="color:#89dceb">&lt;</span> <span style="color:#b4befe">position</span> <span style="color:#89dceb">&amp;&amp;</span> <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">!=</span> <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">current</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">currentPosition</span><span style="color:#89dceb">++</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Set the next pointer of the new node to the next node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">newNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Update the next pointer of the current node to point to the new node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">newNode</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#cdd6f4">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>These are the basic operations for inserting nodes in a circular linked list. You can adapt these operations to insert nodes at specific positions as well.</p>
+<p>Next, let&rsquo;s discuss how to display the elements of a circular linked list.</p>
+<h3 id="display-circular-linkedlist">
+  Display Circular LinkedList:
+  <a class="heading-link" href="#display-circular-linkedlist">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>To display the elements of a circular linked list, you can start with the head node and traverse the list until you reach the starting point again.</p>
+<p>Here&rsquo;s an example implementation in C++:</p>
+<div class="highlight"><div style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#f9e2af">void</span> <span style="color:#89dceb">displayCircularLinkedList</span><span style="color:#cdd6f4">(</span><span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">head</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// If the list is empty, print a message and return
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#cba6f7">if</span> <span style="color:#cdd6f4">(</span><span style="color:#b4befe">head</span> <span style="color:#89dceb">==</span> <span style="color:#cba6f7">nullptr</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">cout</span> <span style="color:#89dceb">&lt;&lt;</span> <span style="color:#a6e3a1">&#34;List is empty.&#34;</span> <span style="color:#89dceb">&lt;&lt;</span> <span style="color:#b4befe">endl</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cba6f7">return</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Traverse the list and print each node&#39;s data until we reach the starting point again
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">current</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">head</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cba6f7">do</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">cout</span> <span style="color:#89dceb">&lt;&lt;</span> <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">data</span> <span style="color:#89dceb">&lt;&lt;</span> <span style="color:#a6e3a1">&#34; &#34;</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">current</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span> <span style="color:#cba6f7">while</span> <span style="color:#cdd6f4">(</span><span style="color:#b4befe">current</span> <span style="color:#89dceb">!=</span> <span style="color:#b4befe">head</span><span style="color:#cdd6f4">);</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#b4befe">cout</span> <span style="color:#89dceb">&lt;&lt;</span> <span style="color:#b4befe">endl</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#cdd6f4">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>In the above code, we start with the head node and print the data of each node until we reach the starting point again (i.e., when the next pointer becomes equal to the head).</p>
+<p>These are the basic operations and concepts related to circular linked lists.</p>
+<p>Lastly, let&rsquo;s cover the last topic of our extensive post on LinkedList the deletion in a circular linked list.</p>
+<h3 id="deletion-in-circular-linkedlist">
+  Deletion in Circular LinkedList
+  <a class="heading-link" href="#deletion-in-circular-linkedlist">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>To delete a node from a circular linked list, you need to consider three scenarios: deleting the first node, deleting the last node, and deleting a node in the middle of the list.</p>
+<ol>
+<li>Deletion of the First Node:</li>
+</ol>
+<p>To delete the first node of a circular linked list, follow these steps:</p>
+<ul>
+<li>Check if the list is empty. If it is, there&rsquo;s nothing to delete.</li>
+<li>Update the next pointer of the last node to skip the first node.</li>
+<li>Update the head pointer to point to the next node.</li>
+<li>Free the memory allocated to the deleted node.</li>
+</ul>
+<p>Here&rsquo;s an example implementation in C++:</p>
+<div class="highlight"><div style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">24
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#f9e2af">void</span> <span style="color:#89dceb">deleteFirstNode</span><span style="color:#cdd6f4">(</span><span style="color:#b4befe">Node</span><span style="color:#89dceb">**</span> <span style="color:#b4befe">head</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cba6f7">if</span> <span style="color:#cdd6f4">(</span><span style="color:#89dceb">*</span><span style="color:#b4befe">head</span> <span style="color:#89dceb">==</span> <span style="color:#cba6f7">nullptr</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">cout</span> <span style="color:#89dceb">&lt;&lt;</span> <span style="color:#a6e3a1">&#34;List is empty. Nothing to delete.&#34;</span> <span style="color:#89dceb">&lt;&lt;</span> <span style="color:#b4befe">endl</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cba6f7">return</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Store the reference to the first node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">firstNode</span> <span style="color:#89dceb">=</span> <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Traverse to the last node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">lastNode</span> <span style="color:#89dceb">=</span> <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cba6f7">while</span> <span style="color:#cdd6f4">(</span><span style="color:#b4befe">lastNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">!=</span> <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">lastNode</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">lastNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Update the next pointer of the last node to skip the first node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">lastNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">firstNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Update the head pointer to the next node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">firstNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Free the memory of the deleted node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#cba6f7">delete</span> <span style="color:#b4befe">firstNode</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#cdd6f4">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<ol start="2">
+<li>Deletion of the Last Node:
+To delete the last node of a circular linked list, follow these steps:</li>
+</ol>
+<ul>
+<li>Check if the list is empty. If it is, there&rsquo;s nothing to delete.</li>
+<li>Traverse to the second-to-last node.</li>
+<li>Update the next pointer of the second-to-last node to point back to the first node.</li>
+<li>Free the memory allocated to the deleted node.</li>
+</ul>
+<p>Here&rsquo;s an example implementation in C++:</p>
+<p><div class="highlight"><div style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">21
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#f9e2af">void</span> <span style="color:#89dceb">deleteLastNode</span><span style="color:#cdd6f4">(</span><span style="color:#b4befe">Node</span><span style="color:#89dceb">**</span> <span style="color:#b4befe">head</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cba6f7">if</span> <span style="color:#cdd6f4">(</span><span style="color:#89dceb">*</span><span style="color:#b4befe">head</span> <span style="color:#89dceb">==</span> <span style="color:#cba6f7">nullptr</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">cout</span> <span style="color:#89dceb">&lt;&lt;</span> <span style="color:#a6e3a1">&#34;List is empty. Nothing to delete.&#34;</span> <span style="color:#89dceb">&lt;&lt;</span> <span style="color:#b4befe">endl</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cba6f7">return</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Traverse to the second-to-last node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">secondToLastNode</span> <span style="color:#89dceb">=</span> <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cba6f7">while</span> <span style="color:#cdd6f4">(</span><span style="color:#b4befe">secondToLastNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">!=</span> <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">secondToLastNode</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">secondToLastNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Store the reference to the last node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">lastNode</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">secondToLastNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Update the next pointer of the second-to-last node to point back to the first node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">secondToLastNode</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">=</span> <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Free the memory of the deleted node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#cba6f7">delete</span> <span style="color:#b4befe">lastNode</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#cdd6f4">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+3. Deletion of a Node in the Middle:
+To delete a node in the middle of a circular linked list, follow these steps:</p>
+<ul>
+<li>Check if the list is empty. If it is, there&rsquo;s nothing to delete.</li>
+<li>Traverse the list until you find the node to be deleted and its previous node.</li>
+<li>Update the next pointer of the previous node to skip the node to be deleted.</li>
+<li>Free the memory allocated to the deleted node.</li>
+</ul>
+<p>Here&rsquo;s an example implementation in C++ for deleting a node with a given value:</p>
+<div class="highlight"><div style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7d5943">32
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#fab387;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#f9e2af">void</span> <span style="color:#89dceb">deleteNodeWithValue</span><span style="color:#cdd6f4">(</span><span style="color:#b4befe">Node</span><span style="color:#89dceb">**</span> <span style="color:#b4befe">head</span><span style="color:#cdd6f4">,</span> <span style="color:#f9e2af">int</span> <span style="color:#b4befe">value</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cba6f7">if</span> <span style="color:#cdd6f4">(</span><span style="color:#89dceb">*</span><span style="color:#b4befe">head</span> <span style="color:#89dceb">==</span> <span style="color:#cba6f7">nullptr</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">cout</span> <span style="color:#89dceb">&lt;&lt;</span> <span style="color:#a6e3a1">&#34;List is empty. Nothing to delete.&#34;</span> <span style="color:#89dceb">&lt;&lt;</span> <span style="color:#b4befe">endl</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cba6f7">return</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">current</span> <span style="color:#89dceb">=</span> <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#b4befe">Node</span><span style="color:#89dceb">*</span> <span style="color:#b4befe">previous</span> <span style="color:#89dceb">=</span> <span style="color:#cba6f7">nullptr</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Traverse until the node to be deleted is found
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#cba6f7">do</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">previous</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">current</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">current</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span> <span style="color:#cba6f7">while</span> <span style="color:#cdd6f4">(</span><span style="color:#b4befe">current</span> <span style="color:#89dceb">!=</span> <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span> <span style="color:#89dceb">&amp;&amp;</span> <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">data</span> <span style="color:#89dceb">!=</span> <span style="color:#b4befe">value</span><span style="color:#cdd6f4">);</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// If the node was not found
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#cba6f7">if</span> <span style="color:#cdd6f4">(</span><span style="color:#b4befe">current</span> <span style="color:#89dceb">==</span> <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#b4befe">cout</span> <span style="color:#89dceb">&lt;&lt;</span> <span style="color:#a6e3a1">&#34;Node not found in the list.&#34;</span> <span style="color:#89dceb">&lt;&lt;</span> <span style="color:#b4befe">endl</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cba6f7">return</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Update the next pointer of the previous node to skip the node to be deleted
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#b4befe">previous</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// If the node to be deleted is the head, update the head pointer
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#cba6f7">if</span> <span style="color:#cdd6f4">(</span><span style="color:#b4befe">current</span> <span style="color:#89dceb">==</span> <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span><span style="color:#cdd6f4">)</span> <span style="color:#cdd6f4">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#89dceb">*</span><span style="color:#b4befe">head</span> <span style="color:#89dceb">=</span> <span style="color:#b4befe">current</span><span style="color:#89dceb">-&gt;</span><span style="color:#b4befe">next</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cdd6f4">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#585b70;font-style:italic">// Free the memory of the deleted node
+</span></span></span><span style="display:flex;"><span><span style="color:#585b70;font-style:italic"></span>    <span style="color:#cba6f7">delete</span> <span style="color:#b4befe">current</span><span style="color:#cdd6f4">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#cdd6f4">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>These are the basic operations for deleting nodes in a circular linked list. You can adapt these operations to delete nodes with specific values or at specific positions.</p>
+<p>With these concepts covered, you should now have a good understanding of linked lists, including singly linked lists, doubly linked lists, circular linked lists, and the operations associated with them.</p>
+<div class="notice tip">
+  <div class="notice-title">
+    <i class="fa fa-lightbulb-o" aria-hidden="true"></i>Tip
+  </div>
+  <div class="notice-content"><p>Here are a few additional concepts and tips related to linked lists:</p>
+<ol>
+<li>Time Complexity:</li>
+</ol>
+<ul>
+<li>Insertion and deletion at the beginning of a linked list have a time complexity of O(1) since it only involves updating the pointers.</li>
+<li>Insertion and deletion at the end of a singly linked list have a time complexity of O(n) since you need to traverse the entire list to reach the last node.</li>
+<li>Insertion and deletion at a specific position in a linked list also have a time complexity of O(n) since you need to traverse the list to reach the desired position.</li>
+<li>Searching for an element in a linked list has a time complexity of O(n) since you may need to traverse the entire list to find the element.</li>
+</ul>
+<ol start="2">
+<li>Doubly Linked List Advantages:</li>
+</ol>
+<ul>
+<li>Doubly linked lists allow for efficient traversal in both forward and backward directions compared to singly linked lists.</li>
+<li>They provide flexibility for operations that require accessing nodes in both directions.</li>
+</ul>
+<ol start="3">
+<li>Reversal of a Doubly Linked List:</li>
+</ol>
+<ul>
+<li>Reversing a doubly linked list involves swapping the next and prev pointers of each node.</li>
+<li>Make sure to update the next and prev pointers correctly to reverse the list.</li>
+</ul>
+<ol start="4">
+<li>Circular Linked List Advantages:</li>
+</ol>
+<ul>
+<li>Circular linked lists can be used to represent circular data structures, such as a round-robin scheduling algorithm or a circular buffer.</li>
+<li>They allow for continuous traversal without reaching the end of the list.</li>
+</ul>
+<ol start="5">
+<li>Memory Management:</li>
+</ol>
+<ul>
+<li>Remember to deallocate memory for deleted nodes using the delete keyword in C++ to avoid memory leaks.</li>
+<li>Be cautious with pointers to avoid accessing memory that has been deallocated.</li>
+</ul>
+<ol start="6">
+<li>Considerations for Implementation:</li>
+</ol>
+<ul>
+<li>When implementing linked lists, consider edge cases such as an empty list, a list with a single node, or handling the last node.</li>
+<li>Keep track of the head and tail pointers for efficient insertion and deletion at both ends.</li>
+<li>Ensure that you properly initialize new nodes and update the pointers to maintain the integrity of the list.</li>
+<li>By understanding these concepts and considerations, you can effectively work with linked lists and utilize them in various scenarios</li>
+</ul></div>
+</div>
+
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2023
+     Harshal Rathore 
+    ·
+    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.9cf2dbf9b6989ef8eae941ffb4231c26d1dc026bca38f1d19fdba50177d8a9ac.js" integrity="sha256-nPLb&#43;baYnvjq6UH/tCMcJtHcAmvKOPHRn9ulAXfYqaw="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>
