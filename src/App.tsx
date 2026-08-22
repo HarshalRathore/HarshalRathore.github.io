@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { Suspense, lazy, useCallback } from 'react'
 import { Canvas } from '@react-three/fiber'
 import CameraRig from './journey/CameraRig'
 import Sky from './journey/Sky'
@@ -7,6 +7,16 @@ import { WAYPOINTS, nextWaypointFrom, prevWaypointFrom, useJourneyStore } from '
 import { useScrollProgress } from './journey/hooks'
 import ScrollHint from './journey/ScrollHint'
 import ProjectOverlay from './journey/ProjectOverlay'
+
+const GardenLazy = lazy(() => import('./journey/garden/Garden'))
+
+function GardenMount({ active }: { active: boolean }) {
+  return active ? (
+    <Suspense fallback={null}>
+      <GardenLazy />
+    </Suspense>
+  ) : null
+}
 
 function jumpTo(w: number, smooth: boolean) {
   const max = document.documentElement.scrollHeight - window.innerHeight
@@ -17,6 +27,7 @@ export default function App() {
   useScrollProgress()
   const activeWaypoint = useJourneyStore((s) => s.activeWaypoint)
   const reducedMotion = useJourneyStore((s) => s.reducedMotion)
+  const gardenActive = useJourneyStore((s) => s.gardenActive)
 
   const onKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
@@ -50,6 +61,7 @@ export default function App() {
           <Sky />
           <CameraRig />
           <Islands />
+          <GardenMount active={gardenActive} />
         </Canvas>
       </div>
       <header className="fixed left-4 top-4 z-10 rounded-full px-4 py-2 font-display text-xl backdrop-blur-sm border border-white/15" style={{ color: 'var(--hud-ink)', background: 'var(--hud-scrim)' }}>Harshal Rathore</header>
