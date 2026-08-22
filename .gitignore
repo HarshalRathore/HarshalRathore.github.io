@@ -1,0 +1,13 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+
+# legacy Hugo site backup (kept locally only — must NEVER ship; contains an injected third-party script)
+_legacy-hugo-backup/
+
+# env & OS
+.env*
+*.local
+.DS_Store
