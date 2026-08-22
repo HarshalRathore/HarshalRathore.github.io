@@ -1,0 +1,450 @@
+Linux SHELL Guide
+            
+          
+
+        
+
+        
+          
+            
+              
+              
+                July 15, 2022
+              
+            
+            
+              
+              5-minute read
+            
+          
+
+          
+  
+    Harshal Rathore
+
+          
+          
+  
+    
+      Linux
+    
+      •
+    
+      Shell-script
+    
+      •
+    
+      bash
+    
+      •
+    
+      cli
+    
+
+        
+
+      
+
+      
+        
+        
+  Linux SHELL Guide
+  
+    
+  
+
+Shows all hidden files and folders along with normal ones.
+
+1
+
+ls -a
+
+list lot of information about non-hidden files and directories
+
+1
+
+la -l
+
+list above info for hidden files and directories too
+
+1
+
+ls -la OR ls -l -a
+
+to switch to a dir same as cd but it just saves the path from which you came
+
+1
+
+pushd <path>
+
+to switch back to dir from which you came with pushd.
+
+1
+
+popd
+
+tells details of file
+
+1
+
+file <name of file>
+
+search a directory or a file in data base
+
+1
+
+locate <name of file or directory>
+
+or
+
+1
+
+mlocate <name of file or directory>
+
+NOTE: run before locate/mlocate to update database
+
+1
+
+sudo updatedb
+
+see calander
+
+1
+
+cal
+
+see if command is installed or not, returns path of the command
+
+1
+
+which <command>
+
+brief one-line discription of what a command can do
+
+1
+
+whatis <command>
+
+shows the commands related to or contain given keyword
+
+1
+
+apropos <keyword>
+
+equivalent to apropos but show information in readable format
+
+1
+
+man <keyword>
+
+copy a files and directories
+
+1
+
+cp -r<path of the file to be copied> <name of the copied file>
+
+move files and directories
+
+1
+
+mv <path of file> <path to be moved>
+
+delete/remove files
+
+1
+
+rm <file>
+
+delete/remove directories
+
+1
+
+rm -r <directorie>
+
+create a text file.
+
+1
+2
+3
+
+touch <file_name>
+echo 'write text here' > textfile.txt
+printf 'write \\ntext \\nhere' > textfile.txt
+
+NOTE: use printf for format the text
+
+show the content of a text file on terminal
+
+1
+
+cat <file>
+
+write into the text file
+
+1
+
+cat >> <file_name>
+
+copy file1 to file2
+
+1
+
+cat <file1> >> <file2>
+
+“>” operator will overwrite the existing data
+
+“»” operator will append data
+
+bash text editor for editing files in CLI format. there are others too
+
+1
+2
+
+nano <file1>
+ls -la ~ >> textfile.txt
+
+switch to root user or root account, to exit type exit
+
+1
+
+sudo -s
+
+switch to another user account, to exit type exit
+
+1
+
+su - <username>
+
+move to root user account
+
+1
+2
+
+su
+su -
+
+see how many accounts are logged in
+
+1
+
+users
+
+executable permission to file for everyone
+
+1
+
+chmod +x <file_name>
+
+get the PID of programme and all its instances
+
+1
+
+pidof brave
+
+see the running process
+
+1
+
+top
+
+kill process by their name
+
+1
+2
+
+pkill brave
+killall brave
+
+kill process by their PID
+
+1
+
+kill <PID of the process>
+
+get the snapshot of top (Best)
+
+1
+
+ps aux | grep <name of programme or running file or path or aything relatable to it>
+
+find the exact package
+
+1
+
+apt search --names--only ___
+
+Install .deb files
+
+1
+
+sudo dpkg -i /path/to/.deb/file
+
+sudo apt-get install -f 
+
+apt-cache showpkg/show package-name 
+
+apt-cache depends package-name 
+
+see package info
+
+1
+
+dpkg-deb -I package.deb
+
+create and edit cronjobs (scheduled server tasks)
+
+1
+
+crontab -e
+
+see cronjobs on terminal
+
+1
+
+crontab -l
+
+create a SCREEN session with name
+
+1
+
+screen -S <name_of_session>
+
+see detached and running screen session
+
+1
+
+screen -ls
+
+reattach to detached screen session
+
+1
+
+screen -r <pid_of_screen_session>
+
+see cronjobs-logs with
+
+1
+
+journalctl -t CROND
+
+install/extract tar files
+
+1
+
+tar xvf <file_name>
+
+Find Public IPv4 address
+
+1
+
+dig -4 TXT +short o-o.myaddr.l.google.com @ns1.google.com
+
+Fix bluetooth in ubuntu>18.04
+
+1
+
+sudo modprobe -r btusb && sudo modprobe btusb
+
+Instll/Add PPA repository
+
+sudo add-apt-repository ppa:dr-akulavich/lighttable // adds repository link to /etc/apt/source.list
+
+1
+
+sudo apt-get update
+
+sudo apt-get install lighttable-installer // installing the software
+
+Remove PPA repository and link
+
+listppa.sh
+
+Use the above script to see the list of installed PPAs
+
+now remove the ppa
+
+1
+
+sudo add-apt-repository --remove ppa:bluetooth/bluez
+
+Check mounted/connected disks to the system
+
+1
+
+lsblk
+
+Command for burning USB {notice the of and if carefully}
+
+1
+
+sudo dd bs=4M if=Downloads/endeavouros-2021.08.27-x86_64.iso of=/dev/sdb conv=fdatasync status=progress
+
+Set-up ssh key for connecting to git
+
+eval ssh-agent``
+
+1
+2
+
+chmod 400 <private_key_file>
+ssh-add ~/.ssh/<private_key_file>**>> /dev/null 2>&1**
+
+https://stackoverflow.com/questions/10508843/what-is-dev-null-21
+
+  Pacman, AUR
+  
+    
+  
+
+List dependency of a package
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+pacman -Si
+or
+pacman -Si package_name | grep 'Depends On'
+or
+pactree -s package_name
+or
+pactree -sr package_name #see reverse dependency
+or
+pactree package_name -lu #in format for reinstalling dependency
+
+See locally installed packages~ AUR(s) or installed with AUR helpers.
+
+1
+
+pacman -Qm or pacman -Qmq
+
+To list all the Fonts installed in your system
+
+1
+
+fc-list
+
+  How to add users in arch Linux
+  
+    
+  
+
+do adduser NAME or useradd NAME whichever is present in your system.
+
+then set password for NAME with passwd NAME
+
+Give sudo privileges to NAME
+
+To give sudo rights to a user you can add him to group wheel . Wheel is group for users who want every system administrator privileges. you can add a user to group wheel with gpasswd -a NAME wheel , notice to give users of wheel group root privileges in /etc/sudoers (always edit /etc/sudoers with sudo visudo to avoid Error(s) ) file otherwise even if you add users to wheel group they will not be able to use sudo. add this line %wheel ALL=(ALL) ALL for wheel group users in /etc/sudoers.
+
+Or you can custom give a user root privilages like by adding this line
+
+USER_NAME ALL=(ALL) ALL to /etc/sudoers if you choose to do this then you don’t need to add NAME to wheel group.
+
+but the first approach is recommended.

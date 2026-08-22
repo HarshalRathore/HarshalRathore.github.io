@@ -6,7 +6,8 @@ import { fileURLToPath } from 'node:url'
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const OUT_DIR = resolve(ROOT, 'public', 'writing')
-const SRC_DIR = '/home/harshal/portfolio-project/docs/legacy-posts'
+// Sources live in-repo so CI runners can build (no machine-specific paths).
+const SRC_DIR = resolve(process.cwd(), 'content-sources')
 
 const POSTS = [
   {
