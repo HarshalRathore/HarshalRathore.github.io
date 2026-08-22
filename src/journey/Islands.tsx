@@ -1,4 +1,5 @@
 import HeroIsland from './HeroIsland'
+import JourneyLights from './JourneyLights'
 import { WAYPOINT_POS } from './waypoints'
 import { ISLAND_VARIANTS } from './islands/variants'
 
@@ -14,8 +15,7 @@ export default function Islands() {
           </group>
         )
       })}
-      <ambientLight intensity={0.7} />
-      <directionalLight position={[5, 10, 5]} intensity={1.2} />
+      <JourneyLights />
     </>
   )
 }

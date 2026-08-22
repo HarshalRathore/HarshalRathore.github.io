@@ -25,8 +25,8 @@ export function OssRidge() {
     <Base tint="#7d7568">
       <mesh position={[-1.4, 2.4, 0]}><boxGeometry args={[1.1, 4.8, 1.1]} /><meshStandardMaterial color="#4f5a63" flatShading /></mesh>
       <mesh position={[1.4, 3.1, 0.2]}><boxGeometry args={[1.1, 6.2, 1.1]} /><meshStandardMaterial color="#42525e" flatShading /></mesh>
-      <mesh position={[-1.4, 5.05, 0]}><icosahedronGeometry args={[0.18, 0]} /><meshStandardMaterial color="#E8A05C" emissive="#E8A05C" emissiveIntensity={0.6} /></mesh>
-      <mesh position={[1.4, 6.45, 0.2]}><icosahedronGeometry args={[0.18, 0]} /><meshStandardMaterial color="#E8A05C" emissive="#E8A05C" emissiveIntensity={0.6} /></mesh>
+      <mesh position={[-1.4, 5.05, 0]}><icosahedronGeometry args={[0.18, 0]} /><meshStandardMaterial color="#E8A05C" emissive="#E8A05C" emissiveIntensity={0.85} /></mesh>
+      <mesh position={[1.4, 6.45, 0.2]}><icosahedronGeometry args={[0.18, 0]} /><meshStandardMaterial color="#E8A05C" emissive="#E8A05C" emissiveIntensity={0.85} /></mesh>
     </Base>
   )
 }
@@ -38,7 +38,7 @@ export function MonumentValley() {
       <mesh position={[0, 1.4, 0]}><cylinderGeometry args={[3.1, 3.4, 1.1, 8]} /><meshStandardMaterial color="#a57b5b" flatShading /></mesh>
       <mesh position={[0, 2.5, 0]}><cylinderGeometry args={[2.1, 2.4, 1.0, 8]} /><meshStandardMaterial color="#96704f" flatShading /></mesh>
       <mesh position={[0, 3.5, 0]}><cylinderGeometry args={[1.2, 1.5, 0.9, 8]} /><meshStandardMaterial color="#8a6547" flatShading /></mesh>
-      <mesh position={[0, 4.15, 0]}><icosahedronGeometry args={[0.22, 0]} /><meshStandardMaterial color="#E8A05C" emissive="#E8A05C" emissiveIntensity={0.6} /></mesh>
+      <mesh position={[0, 4.15, 0]}><icosahedronGeometry args={[0.22, 0]} /><meshStandardMaterial color="#E8A05C" emissive="#E8A05C" emissiveIntensity={0.85} /></mesh>
     </Base>
   )
 }
@@ -62,7 +62,7 @@ export function HackathonPeaks() {
       <mesh position={[-2.0, 1.7, -0.5]}><coneGeometry args={[1.0, 3.6, 5]} /><meshStandardMaterial color="#5d685f" flatShading /></mesh>
       <mesh position={[0.2, 2.7, 0.3]}><coneGeometry args={[1.15, 5.2, 5]} /><meshStandardMaterial color="#54606f" flatShading /></mesh>
       <mesh position={[2.2, 3.6, -0.2]}><coneGeometry args={[0.95, 6.4, 5]} /><meshStandardMaterial color="#49566b" flatShading /></mesh>
-      <mesh position={[2.2, 7.0, -0.2]}><icosahedronGeometry args={[0.2, 0]} /><meshStandardMaterial color="#E8A05C" emissive="#E8A05C" emissiveIntensity={0.65} /></mesh>
+      <mesh position={[2.2, 7.0, -0.2]}><icosahedronGeometry args={[0.2, 0]} /><meshStandardMaterial color="#E8A05C" emissive="#E8A05C" emissiveIntensity={0.9} /></mesh>
     </Base>
   )
 }
