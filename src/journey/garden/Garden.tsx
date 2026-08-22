@@ -120,9 +120,32 @@ export default function GravityGarden() {
         if (el === document.body) break
         el = el.parentElement
       }
+      // Retarget all subsequent pointer events to the canvas so mid-drag
+      // DOM churn can't strand the grab.
+      try {
+        gl.domElement.setPointerCapture(e.pointerId)
+      } catch {
+        /* pointer already released */
+      }
     },
     [camera, gl],
   )
+
+  // Gesture guard: the browser snapshots touch-action at GESTURE START,
+  // before any pointerdown handler can run — so touch-action alone can't
+  // save an in-progress grab. While a grab is live, cancel the pan default
+  // at the document level (non-passive is mandatory for preventDefault).
+  useEffect(() => {
+    const guard = (ev: TouchEvent) => {
+      if (grabbed.current) ev.preventDefault()
+    }
+    document.addEventListener('touchstart', guard, { passive: false })
+    document.addEventListener('touchmove', guard, { passive: false })
+    return () => {
+      document.removeEventListener('touchstart', guard)
+      document.removeEventListener('touchmove', guard)
+    }
+  }, [])
 
   // release: window-level so drags ending off-mesh still throw naturally
   useEffect(() => {
