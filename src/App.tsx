@@ -1,4 +1,4 @@
-import { Suspense, lazy, useCallback } from 'react'
+import { Suspense, lazy, useCallback, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import * as THREE from 'three'
 import CameraRig from './journey/CameraRig'
@@ -11,6 +11,7 @@ import ProjectOverlay from './journey/ProjectOverlay'
 import Dusty from './journey/dusty/Dusty'
 import { Fx } from './journey/fx/FX'
 import SoundToggle from './journey/sound/SoundToggle'
+import Preloader from './journey/preloader/Preloader'
 
 const GardenLazy = lazy(() => import('./journey/garden/Garden'))
 
@@ -29,6 +30,7 @@ function jumpTo(w: number, smooth: boolean) {
 
 export default function App() {
   useScrollProgress()
+  const [created, setCreated] = useState(false)
   const activeWaypoint = useJourneyStore((s) => s.activeWaypoint)
   const reducedMotion = useJourneyStore((s) => s.reducedMotion)
   const gardenActive = useJourneyStore((s) => s.gardenActive)
@@ -54,6 +56,7 @@ export default function App() {
 
   return (
     <div className="relative">
+      <Preloader done={created} />
       <div aria-hidden className="pointer-events-none h-[700vh]" />
       <div
         className="fixed inset-0 z-0 outline-none focus-visible:ring-2 focus-visible:ring-ember"
@@ -61,7 +64,11 @@ export default function App() {
         aria-label="Career Archipelago journey"
         onKeyDown={onKeyDown}
       >
-        <Canvas camera={{ fov: 55, position: [0, 0, 0] }} gl={{ toneMapping: THREE.ACESFilmicToneMapping }}>
+        <Canvas
+          camera={{ fov: 55, position: [0, 0, 0] }}
+          gl={{ toneMapping: THREE.ACESFilmicToneMapping }}
+          onCreated={() => setCreated(true)}
+        >
           <Sky />
           <CameraRig />
           <Islands />
