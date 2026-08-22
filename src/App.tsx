@@ -1,6 +1,7 @@
 import { useCallback } from 'react'
 import { Canvas } from '@react-three/fiber'
 import CameraRig from './journey/CameraRig'
+import Sky from './journey/Sky'
 import Islands from './journey/Islands'
 import { WAYPOINTS, nextWaypointFrom, prevWaypointFrom, useJourneyStore } from './journey/store'
 import { useScrollProgress } from './journey/hooks'
@@ -44,12 +45,13 @@ export default function App() {
         onKeyDown={onKeyDown}
       >
         <Canvas camera={{ fov: 55, position: [0, 0, 0] }}>
+          <Sky />
           <CameraRig />
           <Islands />
         </Canvas>
       </div>
-      <header className="fixed left-4 top-4 z-10 font-display text-xl text-neutral-100">Harshal Rathore</header>
-      <nav className="fixed bottom-4 left-1/2 z-10 -translate-x-1/2 rounded-full bg-black/50 px-5 py-2 font-body text-sm text-neutral-100 backdrop-blur">
+      <header className="fixed left-4 top-4 z-10 font-display text-xl" style={{ color: 'var(--hud-ink)', background: 'var(--hud-scrim)' }}>Harshal Rathore</header>
+      <nav className="fixed bottom-4 left-1/2 z-10 -translate-x-1/2 rounded-full px-5 py-2 font-body text-sm backdrop-blur" style={{ color: 'var(--hud-ink)', background: 'var(--hud-scrim)' }}>
         {String(activeWaypoint).padStart(2, '0')} — {WAYPOINTS[activeWaypoint - 1]}
       </nav>
     </div>
