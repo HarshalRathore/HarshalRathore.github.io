@@ -1,5 +1,6 @@
 import { Suspense, lazy, useCallback } from 'react'
 import { Canvas } from '@react-three/fiber'
+import * as THREE from 'three'
 import CameraRig from './journey/CameraRig'
 import Sky from './journey/Sky'
 import Islands from './journey/Islands'
@@ -8,6 +9,8 @@ import { useScrollProgress } from './journey/hooks'
 import ScrollHint from './journey/ScrollHint'
 import ProjectOverlay from './journey/ProjectOverlay'
 import Dusty from './journey/dusty/Dusty'
+import { Fx } from './journey/fx/FX'
+import SoundToggle from './journey/sound/SoundToggle'
 
 const GardenLazy = lazy(() => import('./journey/garden/Garden'))
 
@@ -58,12 +61,13 @@ export default function App() {
         aria-label="Career Archipelago journey"
         onKeyDown={onKeyDown}
       >
-        <Canvas camera={{ fov: 55, position: [0, 0, 0] }}>
+        <Canvas camera={{ fov: 55, position: [0, 0, 0] }} gl={{ toneMapping: THREE.ACESFilmicToneMapping }}>
           <Sky />
           <CameraRig />
           <Islands />
           <GardenMount active={gardenActive} />
           <Dusty />
+          <Fx />
         </Canvas>
       </div>
       <header className="fixed left-4 top-4 z-10 rounded-full px-4 py-2 font-display text-xl backdrop-blur-sm border border-white/15" style={{ color: 'var(--hud-ink)', background: 'var(--hud-scrim)' }}>Harshal Rathore</header>
@@ -85,6 +89,7 @@ export default function App() {
       )}
       <ScrollHint />
       <ProjectOverlay />
+      <SoundToggle />
     </div>
   )
 }
