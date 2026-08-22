@@ -7,6 +7,7 @@ import { WAYPOINTS, nextWaypointFrom, prevWaypointFrom, useJourneyStore } from '
 import { useScrollProgress } from './journey/hooks'
 import ScrollHint from './journey/ScrollHint'
 import ProjectOverlay from './journey/ProjectOverlay'
+import Dusty from './journey/dusty/Dusty'
 
 const GardenLazy = lazy(() => import('./journey/garden/Garden'))
 
@@ -62,6 +63,7 @@ export default function App() {
           <CameraRig />
           <Islands />
           <GardenMount active={gardenActive} />
+          <Dusty />
         </Canvas>
       </div>
       <header className="fixed left-4 top-4 z-10 rounded-full px-4 py-2 font-display text-xl backdrop-blur-sm border border-white/15" style={{ color: 'var(--hud-ink)', background: 'var(--hud-scrim)' }}>Harshal Rathore</header>
