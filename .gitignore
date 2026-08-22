@@ -11,3 +11,4 @@ _legacy-hugo-backup/
 .env*
 *.local
 .DS_Store
+tsconfig.tsbuildinfo
