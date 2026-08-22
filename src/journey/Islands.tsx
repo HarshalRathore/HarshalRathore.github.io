@@ -1,11 +1,13 @@
 import { WAYPOINT_POS } from './waypoints'
+import HeroIsland from './HeroIsland'
 
 const HUES = ['#c96f4a', '#d9a066', '#8a9a5b', '#6d8ea0', '#7d6ba0', '#a07d8a', '#e8a05c']
 
 export default function Islands() {
   return (
     <>
-      {WAYPOINT_POS.map((pos, i) => (
+      <HeroIsland />
+      {WAYPOINT_POS.map((pos, i) => i === 0 ? null : (
         <mesh key={i} position={pos}>
           <boxGeometry args={[3, 3, 3]} />
           <meshStandardMaterial color={HUES[i % HUES.length]} />
