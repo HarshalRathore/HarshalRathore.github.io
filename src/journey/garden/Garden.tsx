@@ -127,6 +127,7 @@ export default function GravityGarden() {
       } catch {
         /* pointer already released */
       }
+      (window as { __gardenDragFrames?: number }).__gardenDragFrames = 0
     },
     [camera, gl],
   )
@@ -176,6 +177,10 @@ export default function GravityGarden() {
   useFrame(() => {
     const g = grabbed.current
     if (!g) return
+    // Re-assert every frame: monument hover handlers clobber body cursor.
+    document.body.style.cursor = 'grabbing'
+    ;(window as { __gardenDragFrames?: number }).__gardenDragFrames =
+      ((window as { __gardenDragFrames?: number }).__gardenDragFrames ?? 0) + 1
     // unproject current pointer onto the sphere at the recorded grab distance
     _ndc.set(pointer.x, pointer.y, 0.5).unproject(camera)
     _dir.copy(_ndc).sub(camera.position).normalize()
