@@ -56,6 +56,19 @@ export default function App() {
       <nav className="fixed bottom-4 left-1/2 z-10 -translate-x-1/2 rounded-full px-5 py-2 font-body text-sm backdrop-blur-sm border border-white/15" style={{ color: 'var(--hud-ink)', background: 'var(--hud-scrim)' }}>
         {String(activeWaypoint).padStart(2, '0')} — {WAYPOINTS[activeWaypoint - 1]}
       </nav>
+      {activeWaypoint === 6 && (
+        <div className="fixed bottom-20 left-1/2 z-10 flex -translate-x-1/2 flex-wrap justify-center gap-2 px-4">
+          {[
+            ['Linked Lists', '/writing/linked-lists/'],
+            ['Git for Beginners', '/writing/git-for-beginners/'],
+            ['Linux SHELL Guide', '/writing/linux-shell-guide/'],
+          ].map(([label, href]) => (
+            <a key={href} href={href} className="rounded-full border border-white/15 bg-black/40 px-4 py-2 font-body text-sm text-neutral-100 backdrop-blur hover:border-ember">
+              {label} ↗
+            </a>
+          ))}
+        </div>
+      )}
       <ScrollHint />
       <ProjectOverlay />
     </div>

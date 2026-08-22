@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href="/writing/git-for-beginners/" />
+    <title>Git for Beginners by Me</title>
+    <style>
+      body {
+        background: #0A1122;
+        color: #E7E3DC;
+        font-family: ui-sans-serif, system-ui;
+        margin: 0;
+        padding: 0;
+      }
+      article {
+        max-width: 72ch;
+        margin: 0 auto;
+        padding: 4rem 1.25rem;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: Georgia, 'Times New Roman', serif;
+        color: #F3EDE2;
+        line-height: 1.15;
+      }
+      a {
+        color: #E8A05C;
+      }
+      pre,
+      code {
+        font-family: ui-monospace, Menlo, monospace;
+        background: #101A33;
+        border-radius: 8px;
+      }
+      pre {
+        padding: 1rem;
+        overflow-x: auto;
+      }
+      code {
+        padding: 0.1rem 0.35rem;
+      }
+      .back {
+        color: #E8A05C;
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <article>
+      <p><a class="back" href="/">&#8592; Back to the Archipelago</a></p>
+      <h1>Git for Beginners by Me</h1>
+      <p>Set git user info (assuming that you are the only user of this System)</p>
+      <pre><code>git config --global user.name &lt;name&gt;
+git config --global user.email &lt;email&gt;</code></pre>
+      <p>User info for a certain Repository only</p>
+      <pre><code>git congig user.name &lt;name&gt;
+git config user.email &lt;email&gt;</code></pre>
+      <p>Initialize git before using git commands</p>
+      <pre><code>git init</code></pre>
+      <p>Add files on staging area to be committed/Save</p>
+      <pre><code>git add &lt;file_name&gt;
+git add . (stages all the files all together)</code></pre>
+      <p>See current git status</p>
+      <pre><code>git status</code></pre>
+      <p>Unstages file(s) from staging area</p>
+      <pre><code>git restore --staged &lt;file_name&gt; OR .</code></pre>
+      <p>Untrack a file/directory permanently from git</p>
+      <pre><code>git rm --cached &lt;file_name&gt;</code></pre>
+      <p>Untrack a file/directory temporarily from git</p>
+      <pre><code>git update-index --assume-unchanged path/to/file</code></pre>
+      <p>Track files which were set to Untrack temporarily in git</p>
+      <pre><code>git update-index --no-assume-unchanged path/to/file</code></pre>
+      <p>see the list of files set to Untrack temporarily in git</p>
+      <pre><code>git ls-files -v | grep "^h "</code></pre>
+      <p>git ls-files -v |? {$_ -cmatch '^h '}//Windows friendly</p>
+      <p>Restore deleted file(s) or reverse the Change in file to last commit.</p>
+      <p>git restore &lt;file_name&gt; OR . (Note that files to be restored should have been commited)</p>
+      <p>Create a Branch</p>
+      <pre><code>git branch &lt;name_of_branch&gt;</code></pre>
+      <p>Visit/Enter a Branch</p>
+      <pre><code>git checkout &lt;name_of_branch&gt;</code></pre>
+      <p>Visit a commit from logs</p>
+      <pre><code>git checkout &lt;SHA256_key_of_the_commit&gt;</code></pre>
+      <p>See logs of the branch</p>
+      <pre><code>git log</code></pre>
+      <p>To checkout the branch when creating it, use</p>
+      <pre><code>git checkout -b branchname &lt;sha1-of-commit or HEAD~3&gt;</code></pre>
+      <p>Note:- if you created a branch and committed some changes you can’t directly push it to remote, first you have to publish it and also set git to auto track it so you can use git push git pull directly.</p>
+      <p>git push -u origin &lt;branch&gt; (-u is short for –set-upstream)</p>
+      <p>Note:- You can only create a single PR from a same branch. For how to create more PR for the same repository if your previous PRs are still not merged click-here.</p>
+      <p>Merge branch</p>
+      <pre><code>git merge &lt;name_of_branch&gt;</code></pre>
+      <p>Delete a Branch</p>
+      <p>git branch -d &lt;name_of_branch&gt; (it’ll only work if branch to be deleted is already merged with master branch)</p>
+      <p>Force delete a Branch</p>
+      <p>git branch -D &lt;name_of_branch&gt;  (It’ll give error if you are in the branch while deleting it)</p>
+      <p>See all the files on staged area.</p>
+      <pre><code>git diff --name-only --cached</code></pre>
+      <p>See git index</p>
+      <pre><code>git ls-files</code></pre>
+      <p>see only modified files</p>
+      <pre><code>git ls-files -m</code></pre>
+      <p>Stage only modified files</p>
+      <pre><code>git add -u</code></pre>
+      <p>Commit only modified files</p>
+      <pre><code>git commmit -a</code></pre>
+      <p>See status of only tracking files in git</p>
+      <pre><code>git status -uno</code></pre>
+      <p>In case of multiple SSH Github account keys check which one is being used by default</p>
+      <pre><code>ssh -T git@github.com
+&gt;&gt;&gt; Hi, HarshalRathore
+ssh -T git@college.github.com
+&gt;&gt;&gt; Hi, HarshalRathore007</code></pre>
+      <p>For using multiple SSH keys associated with different github account</p>
+      <p>Create a ~/.ssh/config file</p>
+      <pre><code>Host college.github.com
+  HostName github.com
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/id_ed25519_harshal24ai017</code></pre>
+      <p>Host github.com HostName github.com PreferredAuthentications publickey IdentityFile ~/.ssh/id_ed25519_harshalrathore2014</p>
+      <p>Host ec2-13-234-110-107.ap-south-1.compute.amazonaws.com HostName ec2-13-234-110-107.ap-south-1.compute.amazonaws.com IdentityFile ~/harshal/newkeypair.pem User ec2-user</p>
+      <p>So when you want to Clone college id repo replace git@github.com…. to git@college.github.com… and everything will work like same. pushing will not give error</p>
+      <p>Git Cheat Sheet</p>
+    </article>
+  </body>
+</html>

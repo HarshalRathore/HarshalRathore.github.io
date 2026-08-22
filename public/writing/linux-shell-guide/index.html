@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href="/writing/linux-shell-guide/" />
+    <title>Linux SHELL Guide</title>
+    <style>
+      body {
+        background: #0A1122;
+        color: #E7E3DC;
+        font-family: ui-sans-serif, system-ui;
+        margin: 0;
+        padding: 0;
+      }
+      article {
+        max-width: 72ch;
+        margin: 0 auto;
+        padding: 4rem 1.25rem;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: Georgia, 'Times New Roman', serif;
+        color: #F3EDE2;
+        line-height: 1.15;
+      }
+      a {
+        color: #E8A05C;
+      }
+      pre,
+      code {
+        font-family: ui-monospace, Menlo, monospace;
+        background: #101A33;
+        border-radius: 8px;
+      }
+      pre {
+        padding: 1rem;
+        overflow-x: auto;
+      }
+      code {
+        padding: 0.1rem 0.35rem;
+      }
+      .back {
+        color: #E8A05C;
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <article>
+      <p><a class="back" href="/">&#8592; Back to the Archipelago</a></p>
+      <h1>Linux SHELL Guide</h1>
+      <p>Shows all hidden files and folders along with normal ones.</p>
+      <pre><code>ls -a</code></pre>
+      <p>list lot of information about non-hidden files and directories</p>
+      <pre><code>la -l</code></pre>
+      <p>list above info for hidden files and directories too</p>
+      <pre><code>ls -la OR ls -l -a</code></pre>
+      <p>to switch to a dir same as cd but it just saves the path from which you came</p>
+      <pre><code>pushd &lt;path&gt;</code></pre>
+      <p>to switch back to dir from which you came with pushd.</p>
+      <pre><code>popd</code></pre>
+      <p>tells details of file</p>
+      <pre><code>file &lt;name of file&gt;</code></pre>
+      <p>search a directory or a file in data base</p>
+      <pre><code>locate &lt;name of file or directory&gt;</code></pre>
+      <p>or</p>
+      <pre><code>mlocate &lt;name of file or directory&gt;</code></pre>
+      <p>NOTE: run before locate/mlocate to update database</p>
+      <pre><code>sudo updatedb</code></pre>
+      <p>see calander</p>
+      <pre><code>cal</code></pre>
+      <p>see if command is installed or not, returns path of the command</p>
+      <pre><code>which &lt;command&gt;</code></pre>
+      <p>brief one-line discription of what a command can do</p>
+      <pre><code>whatis &lt;command&gt;</code></pre>
+      <p>shows the commands related to or contain given keyword</p>
+      <pre><code>apropos &lt;keyword&gt;</code></pre>
+      <p>equivalent to apropos but show information in readable format</p>
+      <pre><code>man &lt;keyword&gt;</code></pre>
+      <p>copy a files and directories</p>
+      <pre><code>cp -r&lt;path of the file to be copied&gt; &lt;name of the copied file&gt;</code></pre>
+      <p>move files and directories</p>
+      <pre><code>mv &lt;path of file&gt; &lt;path to be moved&gt;</code></pre>
+      <p>delete/remove files</p>
+      <pre><code>rm &lt;file&gt;</code></pre>
+      <p>delete/remove directories</p>
+      <pre><code>rm -r &lt;directorie&gt;</code></pre>
+      <p>create a text file.</p>
+      <pre><code>touch &lt;file_name&gt;
+echo 'write text here' &gt; textfile.txt
+printf 'write \\ntext \\nhere' &gt; textfile.txt</code></pre>
+      <p>NOTE: use printf for format the text</p>
+      <p>show the content of a text file on terminal</p>
+      <pre><code>cat &lt;file&gt;</code></pre>
+      <p>write into the text file</p>
+      <pre><code>cat &gt;&gt; &lt;file_name&gt;</code></pre>
+      <p>copy file1 to file2</p>
+      <pre><code>cat &lt;file1&gt; &gt;&gt; &lt;file2&gt;</code></pre>
+      <p>“&gt;” operator will overwrite the existing data</p>
+      <p>“»” operator will append data</p>
+      <p>bash text editor for editing files in CLI format. there are others too</p>
+      <pre><code>nano &lt;file1&gt;
+ls -la ~ &gt;&gt; textfile.txt</code></pre>
+      <p>switch to root user or root account, to exit type exit</p>
+      <pre><code>sudo -s</code></pre>
+      <p>switch to another user account, to exit type exit</p>
+      <pre><code>su - &lt;username&gt;</code></pre>
+      <p>move to root user account</p>
+      <pre><code>su
+su -</code></pre>
+      <p>see how many accounts are logged in</p>
+      <pre><code>users</code></pre>
+      <p>executable permission to file for everyone</p>
+      <pre><code>chmod +x &lt;file_name&gt;</code></pre>
+      <p>get the PID of programme and all its instances</p>
+      <pre><code>pidof brave</code></pre>
+      <p>see the running process</p>
+      <pre><code>top</code></pre>
+      <p>kill process by their name</p>
+      <pre><code>pkill brave
+killall brave</code></pre>
+      <p>kill process by their PID</p>
+      <pre><code>kill &lt;PID of the process&gt;</code></pre>
+      <p>get the snapshot of top (Best)</p>
+      <pre><code>ps aux | grep &lt;name of programme or running file or path or aything relatable to it&gt;</code></pre>
+      <p>find the exact package</p>
+      <pre><code>apt search --names--only ___</code></pre>
+      <p>Install .deb files</p>
+      <pre><code>sudo dpkg -i /path/to/.deb/file</code></pre>
+      <p>sudo apt-get install -f</p>
+      <p>apt-cache showpkg/show package-name</p>
+      <p>apt-cache depends package-name</p>
+      <p>see package info</p>
+      <pre><code>dpkg-deb -I package.deb</code></pre>
+      <p>create and edit cronjobs (scheduled server tasks)</p>
+      <pre><code>crontab -e</code></pre>
+      <p>see cronjobs on terminal</p>
+      <pre><code>crontab -l</code></pre>
+      <p>create a SCREEN session with name</p>
+      <pre><code>screen -S &lt;name_of_session&gt;</code></pre>
+      <p>see detached and running screen session</p>
+      <pre><code>screen -ls</code></pre>
+      <p>reattach to detached screen session</p>
+      <pre><code>screen -r &lt;pid_of_screen_session&gt;</code></pre>
+      <p>see cronjobs-logs with</p>
+      <pre><code>journalctl -t CROND</code></pre>
+      <p>install/extract tar files</p>
+      <pre><code>tar xvf &lt;file_name&gt;</code></pre>
+      <p>Find Public IPv4 address</p>
+      <pre><code>dig -4 TXT +short o-o.myaddr.l.google.com @ns1.google.com</code></pre>
+      <p>Fix bluetooth in ubuntu&gt;18.04</p>
+      <pre><code>sudo modprobe -r btusb &amp;&amp; sudo modprobe btusb</code></pre>
+      <p>Instll/Add PPA repository</p>
+      <p>sudo add-apt-repository ppa:dr-akulavich/lighttable // adds repository link to /etc/apt/source.list</p>
+      <pre><code>sudo apt-get update</code></pre>
+      <p>sudo apt-get install lighttable-installer // installing the software</p>
+      <p>Remove PPA repository and link</p>
+      <p>listppa.sh</p>
+      <p>Use the above script to see the list of installed PPAs</p>
+      <p>now remove the ppa</p>
+      <pre><code>sudo add-apt-repository --remove ppa:bluetooth/bluez</code></pre>
+      <p>Check mounted/connected disks to the system</p>
+      <pre><code>lsblk</code></pre>
+      <p>Command for burning USB {notice the of and if carefully}</p>
+      <pre><code>sudo dd bs=4M if=Downloads/endeavouros-2021.08.27-x86_64.iso of=/dev/sdb conv=fdatasync status=progress</code></pre>
+      <p>Set-up ssh key for connecting to git</p>
+      <p>eval ssh-agent``</p>
+      <pre><code>chmod 400 &lt;private_key_file&gt;
+ssh-add ~/.ssh/&lt;private_key_file&gt;**&gt;&gt; /dev/null 2&gt;&amp;1**</code></pre>
+      <p>https://stackoverflow.com/questions/10508843/what-is-dev-null-21</p>
+      <p>Pacman, AUR</p>
+      <p>List dependency of a package</p>
+      <pre><code>pacman -Si
+or
+pacman -Si package_name | grep 'Depends On'
+or
+pactree -s package_name
+or
+pactree -sr package_name #see reverse dependency
+or
+pactree package_name -lu #in format for reinstalling dependency</code></pre>
+      <p>See locally installed packages~ AUR(s) or installed with AUR helpers.</p>
+      <pre><code>pacman -Qm or pacman -Qmq</code></pre>
+      <p>To list all the Fonts installed in your system</p>
+      <pre><code>fc-list</code></pre>
+      <p>How to add users in arch Linux</p>
+      <p>do adduser NAME or useradd NAME whichever is present in your system.</p>
+      <p>then set password for NAME with passwd NAME</p>
+      <p>Give sudo privileges to NAME</p>
+      <p>To give sudo rights to a user you can add him to group wheel . Wheel is group for users who want every system administrator privileges. you can add a user to group wheel with gpasswd -a NAME wheel , notice to give users of wheel group root privileges in /etc/sudoers (always edit /etc/sudoers with sudo visudo to avoid Error(s) ) file otherwise even if you add users to wheel group they will not be able to use sudo. add this line %wheel ALL=(ALL) ALL for wheel group users in /etc/sudoers.</p>
+      <p>Or you can custom give a user root privilages like by adding this line</p>
+      <p>USER_NAME ALL=(ALL) ALL to /etc/sudoers if you choose to do this then you don’t need to add NAME to wheel group.</p>
+      <p>but the first approach is recommended.</p>
+    </article>
+  </body>
+</html>
