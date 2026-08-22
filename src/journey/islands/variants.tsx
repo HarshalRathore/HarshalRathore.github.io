@@ -1,5 +1,12 @@
 import { useMemo } from 'react'
 import { grassScatter } from '../hero'
+import { useOverlayStore } from '../../content/overlayStore'
+
+/** Pointer affordance for clickable meshes (R3F meshes take no className). */
+const cursorPointer = {
+  onPointerOver: () => { document.body.style.cursor = 'pointer' },
+  onPointerOut: () => { document.body.style.cursor = 'auto' },
+}
 
 const R = 4.2
 
@@ -23,8 +30,8 @@ function Base({ children, tint }: { children?: React.ReactNode; tint: string }) 
 export function OssRidge() {
   return (
     <Base tint="#7d7568">
-      <mesh position={[-1.4, 2.4, 0]}><boxGeometry args={[1.1, 4.8, 1.1]} /><meshStandardMaterial color="#4f5a63" flatShading /></mesh>
-      <mesh position={[1.4, 3.1, 0.2]}><boxGeometry args={[1.1, 6.2, 1.1]} /><meshStandardMaterial color="#42525e" flatShading /></mesh>
+      <mesh position={[-1.4, 2.4, 0]} onClick={() => useOverlayStore.getState().open('harshal-mcp-proxy')} {...cursorPointer}><boxGeometry args={[1.1, 4.8, 1.1]} /><meshStandardMaterial color="#4f5a63" flatShading /></mesh>
+      <mesh position={[1.4, 3.1, 0.2]} onClick={() => useOverlayStore.getState().open('code-intel-mcp')} {...cursorPointer}><boxGeometry args={[1.1, 6.2, 1.1]} /><meshStandardMaterial color="#42525e" flatShading /></mesh>
       <mesh position={[-1.4, 5.05, 0]}><icosahedronGeometry args={[0.18, 0]} /><meshStandardMaterial color="#E8A05C" emissive="#E8A05C" emissiveIntensity={0.85} /></mesh>
       <mesh position={[1.4, 6.45, 0.2]}><icosahedronGeometry args={[0.18, 0]} /><meshStandardMaterial color="#E8A05C" emissive="#E8A05C" emissiveIntensity={0.85} /></mesh>
     </Base>
@@ -35,10 +42,10 @@ export function OssRidge() {
 export function MonumentValley() {
   return (
     <Base tint="#9a6b4f">
-      <mesh position={[0, 1.4, 0]}><cylinderGeometry args={[3.1, 3.4, 1.1, 8]} /><meshStandardMaterial color="#a57b5b" flatShading /></mesh>
-      <mesh position={[0, 2.5, 0]}><cylinderGeometry args={[2.1, 2.4, 1.0, 8]} /><meshStandardMaterial color="#96704f" flatShading /></mesh>
-      <mesh position={[0, 3.5, 0]}><cylinderGeometry args={[1.2, 1.5, 0.9, 8]} /><meshStandardMaterial color="#8a6547" flatShading /></mesh>
-      <mesh position={[0, 4.15, 0]}><icosahedronGeometry args={[0.22, 0]} /><meshStandardMaterial color="#E8A05C" emissive="#E8A05C" emissiveIntensity={0.85} /></mesh>
+      <mesh position={[0, 1.4, 0]} onClick={() => useOverlayStore.getState().open('repeato')} {...cursorPointer}><cylinderGeometry args={[3.1, 3.4, 1.1, 8]} /><meshStandardMaterial color="#a57b5b" flatShading /></mesh>
+      <mesh position={[0, 2.5, 0]} onClick={() => useOverlayStore.getState().open('tcs-analytics')} {...cursorPointer}><cylinderGeometry args={[2.1, 2.4, 1.0, 8]} /><meshStandardMaterial color="#96704f" flatShading /></mesh>
+      <mesh position={[0, 3.5, 0]} onClick={() => useOverlayStore.getState().open('lossy-compression')} {...cursorPointer}><cylinderGeometry args={[1.2, 1.5, 0.9, 8]} /><meshStandardMaterial color="#8a6547" flatShading /></mesh>
+      <mesh position={[0, 4.15, 0]} onClick={() => useOverlayStore.getState().open('skin-zen')} {...cursorPointer}><icosahedronGeometry args={[0.22, 0]} /><meshStandardMaterial color="#E8A05C" emissive="#E8A05C" emissiveIntensity={0.85} /></mesh>
     </Base>
   )
 }

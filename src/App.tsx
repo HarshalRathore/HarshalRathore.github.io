@@ -6,6 +6,7 @@ import Islands from './journey/Islands'
 import { WAYPOINTS, nextWaypointFrom, prevWaypointFrom, useJourneyStore } from './journey/store'
 import { useScrollProgress } from './journey/hooks'
 import ScrollHint from './journey/ScrollHint'
+import ProjectOverlay from './journey/ProjectOverlay'
 
 function jumpTo(w: number, smooth: boolean) {
   const max = document.documentElement.scrollHeight - window.innerHeight
@@ -56,6 +57,7 @@ export default function App() {
         {String(activeWaypoint).padStart(2, '0')} — {WAYPOINTS[activeWaypoint - 1]}
       </nav>
       <ScrollHint />
+      <ProjectOverlay />
     </div>
   )
 }
