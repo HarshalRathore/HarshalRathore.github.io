@@ -6,11 +6,15 @@ export interface DustyInput {
   activeWaypoint: number
 }
 
-/** Pure section→behavior resolver. Garden curiosity wins over night nap. */
+/**
+ * Pure section→behavior resolver.
+ * Priority: garden curiosity > home-grove hover (Dusty's own island — he
+ * never naps there, even at night) > night nap > default follow.
+ */
 export function dustyBehavior(i: DustyInput): DustyBehavior {
   if (i.gardenActive) return 'curious'
-  if (i.stageNight) return 'nap'
   if (i.activeWaypoint === 6) return 'grove'
+  if (i.stageNight) return 'nap'
   return 'follow'
 }
 

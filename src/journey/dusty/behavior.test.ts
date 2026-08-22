@@ -12,4 +12,7 @@ describe('dusty behavior resolver', () => {
   it('hovers in the writing grove', () => {
     expect(dustyBehavior({ stageNight: false, gardenActive: false, activeWaypoint: 6 })).toBe('grove')
   })
+  it('never naps in its home grove, even at night', () => {
+    expect(dustyBehavior({ stageNight: true, gardenActive: false, activeWaypoint: 6 })).toBe('grove')
+  })
 })
