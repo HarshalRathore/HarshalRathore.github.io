@@ -5,6 +5,7 @@ import Sky from './journey/Sky'
 import Islands from './journey/Islands'
 import { WAYPOINTS, nextWaypointFrom, prevWaypointFrom, useJourneyStore } from './journey/store'
 import { useScrollProgress } from './journey/hooks'
+import ScrollHint from './journey/ScrollHint'
 
 function jumpTo(w: number, smooth: boolean) {
   const max = document.documentElement.scrollHeight - window.innerHeight
@@ -50,10 +51,11 @@ export default function App() {
           <Islands />
         </Canvas>
       </div>
-      <header className="fixed left-4 top-4 z-10 font-display text-xl" style={{ color: 'var(--hud-ink)', background: 'var(--hud-scrim)' }}>Harshal Rathore</header>
-      <nav className="fixed bottom-4 left-1/2 z-10 -translate-x-1/2 rounded-full px-5 py-2 font-body text-sm backdrop-blur" style={{ color: 'var(--hud-ink)', background: 'var(--hud-scrim)' }}>
+      <header className="fixed left-4 top-4 z-10 rounded-full px-4 py-2 font-display text-xl backdrop-blur-sm border border-white/15" style={{ color: 'var(--hud-ink)', background: 'var(--hud-scrim)' }}>Harshal Rathore</header>
+      <nav className="fixed bottom-4 left-1/2 z-10 -translate-x-1/2 rounded-full px-5 py-2 font-body text-sm backdrop-blur-sm border border-white/15" style={{ color: 'var(--hud-ink)', background: 'var(--hud-scrim)' }}>
         {String(activeWaypoint).padStart(2, '0')} — {WAYPOINTS[activeWaypoint - 1]}
       </nav>
+      <ScrollHint />
     </div>
   )
 }
