@@ -109,7 +109,13 @@ export default function GravityGarden() {
       if (!body) return
       grabbed.current = { body, planeZ: e.point.distanceTo(camera.position) }
       document.body.style.cursor = 'grabbing'
-      gl.domElement.style.touchAction = 'none'
+      // touch-action must be none'd on every element the browser computes
+      // gestures against — App.tsx wraps the canvas in a fixed div that sits
+      // atop it, so canvas-only toggling lets pointercancel kill touch grabs.
+      const els = [gl.domElement, gl.domElement.parentElement, document.body]
+      els.forEach((el) => {
+        if (el) el.style.touchAction = 'none'
+      })
     },
     [camera, gl],
   )
@@ -124,7 +130,11 @@ export default function GravityGarden() {
       g.body.setLinvel(v, true)
       grabbed.current = null
       document.body.style.cursor = ''
-      gl.domElement.style.touchAction = 'pan-y'
+      // '' restores stylesheet/default on every gesture-relevant element
+      const els = [gl.domElement, gl.domElement.parentElement, document.body]
+      els.forEach((el) => {
+        if (el) el.style.touchAction = ''
+      })
     }
     window.addEventListener('pointerup', release)
     window.addEventListener('pointercancel', release)
