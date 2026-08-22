@@ -6,12 +6,15 @@ describe('day-night palette rig', () => {
     const b = paletteAtStage(0.5); expect(rgbCss(b.ink)).toBe('rgb(33, 29, 46)')
     const c = paletteAtStage(1); expect(rgbCss(c.zenith)).toBe('rgb(15, 31, 66)')
   })
-  it('interpolates monotonically per channel', () => {
-    let prev = paletteAtStage(0)
-    for (let s = 0.05; s <= 1.0001; s += 0.05) {
-      const cur = paletteAtStage(Math.min(s, 1))
-      expect(cur.zenith[0]).toBeLessThanOrEqual(prev.zenith[0] + 1e-9)
-      prev = cur
+  it('is continuous across the golden/dusk segment seam (no color pops)', () => {
+    const a = paletteAtStage(0.499)
+    const b = paletteAtStage(0.501)
+    for (const key of ['zenith', 'horizon', 'haze', 'rim', 'ink'] as const) {
+      const av: number[] = a[key]
+      const bv: number[] = b[key]
+      for (let ch = 0; ch < 3; ch++) {
+        expect(Math.abs((av[ch] ?? 0) - (bv[ch] ?? 0))).toBeLessThan(0.02)
+      }
     }
   })
   it('clamps out-of-range stages', () => {
