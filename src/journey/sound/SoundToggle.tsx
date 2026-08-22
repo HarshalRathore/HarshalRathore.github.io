@@ -15,10 +15,18 @@ export default function SoundToggle() {
 
   const start = () => {
     if (armedRef.current) return
+    const w = window as { __soundArmed?: boolean; __soundPlayErrors?: number }
     const wind = new Audio('audio/wind.ogg')
     wind.loop = true
     wind.volume = 0.25
-    void wind.play().catch(() => {})
+    void wind
+      .play()
+      .then(() => {
+        w.__soundArmed = true
+      })
+      .catch(() => {
+        w.__soundPlayErrors = (w.__soundPlayErrors ?? 0) + 1
+      })
     windRef.current = wind
     armedRef.current = true
   }
