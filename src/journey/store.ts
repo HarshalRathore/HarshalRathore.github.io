@@ -68,6 +68,14 @@ export function isGardenActive(p: number): boolean {
   return p >= 0.4 && p <= 0.55
 }
 
+export function nextWaypointFrom(n: number): number {
+  return Math.min(WAYPOINT_COUNT, n + 1)
+}
+
+export function prevWaypointFrom(n: number): number {
+  return Math.max(1, n - 1)
+}
+
 export const useJourneyStore = create<JourneyState & JourneyActions>((set) => ({
   scrollProgress: 0,
   activeWaypoint: 1,

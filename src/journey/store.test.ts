@@ -40,3 +40,20 @@ describe('Journey Store pure functions', () => {
     expect(isGardenActive(0.9)).toBe(false)
   })
 })
+
+import { nextWaypointFrom, prevWaypointFrom } from './store'
+import { parallaxOffset } from './hooks'
+
+describe('keyboard traversal helpers', () => {
+  it('next/prev clamp at journey bounds', () => {
+    expect(nextWaypointFrom(1)).toBe(2)
+    expect(nextWaypointFrom(7)).toBe(7)
+    expect(prevWaypointFrom(7)).toBe(6)
+    expect(prevWaypointFrom(1)).toBe(1)
+  })
+
+  it('parallax zeroes exactly under reduced motion', () => {
+    expect(parallaxOffset(0.5, -0.5, true)).toEqual({ x: 0, y: 0 })
+    expect(parallaxOffset(0.5, -0.5, false)).toEqual({ x: 0.02, y: -0.02 })
+  })
+})

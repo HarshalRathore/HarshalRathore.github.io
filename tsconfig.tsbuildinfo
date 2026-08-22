@@ -1,1 +1,1 @@
-{"root":["./src/App.tsx","./src/main.tsx","./src/journey/store.test.ts","./src/journey/store.ts"],"version":"5.6.3"}
+{"root":["./src/App.tsx","./src/main.tsx","./src/journey/CameraRig.tsx","./src/journey/Islands.tsx","./src/journey/hooks.ts","./src/journey/store.test.ts","./src/journey/store.ts","./src/journey/waypoints.ts"],"version":"5.6.3"}
