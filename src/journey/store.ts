@@ -21,6 +21,9 @@ export const WAYPOINTS = [
 
 export type WaypointName = (typeof WAYPOINTS)[number]
 
+/** Manual graphics-quality preference (#14 part A) */
+export type QualityPref = 'auto' | 'high' | 'mid' | 'low'
+
 /** Light-stage blend: 0 = Golden Hour (A), 0.5 = Dusk (B), 1 = Blue Hour (C) */
 export type LightStage = number
 
@@ -35,6 +38,9 @@ export interface JourneyState {
   gardenActive: boolean
   /** device quality tier preset (final selection logic lands in ticket #14) */
   qualityTier: 'high' | 'laptop' | 'mobile-std' | 'mobile-low'
+  qualityPref: 'auto' | 'high' | 'mid' | 'low'
+  /** DPR currently applied by the adaptive ladder / manual override (#14 part A) */
+  qualityDpr: number
   soundOn: boolean
   /** ids of the hidden crystals found so far (EGG-C-001, issue #13) */
   crystalsFound: string[]
@@ -51,6 +57,23 @@ interface JourneyActions {
   foundCrystal: (id: string) => void
   toggleKonami: () => void
   clearToast: () => void
+  setQualityPref: (pref: 'auto' | 'high' | 'mid' | 'low') => void
+  setQualityDpr: (dpr: number) => void
+}
+
+const QUALITY_PREFS = ['auto', 'high', 'mid', 'low'] as const
+
+/** Safe-read the persisted quality preference; anything invalid → 'auto'. */
+export function loadQualityPref(): 'auto' | 'high' | 'mid' | 'low' {
+  try {
+    const raw = localStorage.getItem('quality-pref')
+    if (!raw) return 'auto'
+    return (QUALITY_PREFS as readonly string[]).includes(raw)
+      ? (raw as (typeof QUALITY_PREFS)[number])
+      : 'auto'
+  } catch {
+    return 'auto'
+  }
 }
 
 /**
@@ -89,6 +112,8 @@ export const useJourneyStore = create<JourneyState & JourneyActions>((set, get) 
   lightStage: 0,
   gardenActive: false,
   qualityTier: 'high',
+  qualityPref: loadQualityPref(),
+  qualityDpr: 1,
   soundOn: false,
   crystalsFound: (() => {
     try {
@@ -127,4 +152,13 @@ export const useJourneyStore = create<JourneyState & JourneyActions>((set, get) 
       toast: { msg: s.konamiNight ? 'the sun returns' : 'ancient winds shift — night falls', id: Date.now() },
     })),
   clearToast: () => set({ toast: null }),
+  setQualityPref: (pref) => {
+    set({ qualityPref: pref })
+    try {
+      localStorage.setItem('quality-pref', pref)
+    } catch {
+      /* storage unavailable — preference simply won't persist */
+    }
+  },
+  setQualityDpr: (dpr) => set({ qualityDpr: dpr }),
 }))

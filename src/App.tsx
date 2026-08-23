@@ -13,6 +13,9 @@ import { Fx } from './journey/fx/FX'
 import SoundToggle from './journey/sound/SoundToggle'
 import Preloader from './journey/preloader/Preloader'
 import Crystals from './journey/secrets/Crystals'
+import AdaptivePerf from './journey/perf/AdaptivePerf'
+import PortraitReframe from './journey/perf/PortraitReframe'
+import QualityMenu from './journey/perf/QualityMenu'
 import Konami from './journey/secrets/Konami'
 import SecretsHud, { ToastHost } from './journey/secrets/SecretsHud'
 
@@ -80,6 +83,8 @@ export default function App() {
           <GardenMount active={gardenActive} />
           <Dusty />
           <Crystals />
+          <AdaptivePerf />
+          <PortraitReframe />
           <Fx />
         </Canvas>
       </div>
@@ -105,6 +110,7 @@ export default function App() {
       <Konami />
       <SecretsHud />
       <ToastHost />
+      <QualityMenu />
       <SoundToggle />
     </div>
   )
