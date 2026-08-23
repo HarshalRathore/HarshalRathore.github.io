@@ -37,9 +37,9 @@ export function crystalCount(ids: readonly string[]): number {
   return new Set(ids).size
 }
 
-/** World position of crystal i: its waypoint anchor lifted ~2 units into the air. */
+/** World position of crystal i: its mapped waypoint anchor lifted ~2 units into the air. */
 export function crystalPosition(i: number, waypointPos: readonly Vec3[]): Vec3 {
-  const base = waypointPos[i]!
+  const base = waypointPos[CRYSTAL_WAYPOINTS[i]!]!
   const [dx, dz] = CRYSTAL_DELTAS[i]!
   return [base[0] + dx, base[1] + 1.9, base[2] + dz]
 }

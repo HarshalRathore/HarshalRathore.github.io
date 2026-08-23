@@ -83,14 +83,21 @@ export function prevWaypointFrom(n: number): number {
   return Math.max(1, n - 1)
 }
 
-export const useJourneyStore = create<JourneyState & JourneyActions>((set) => ({
+export const useJourneyStore = create<JourneyState & JourneyActions>((set, get) => ({
   scrollProgress: 0,
   activeWaypoint: 1,
   lightStage: 0,
   gardenActive: false,
   qualityTier: 'high',
   soundOn: false,
-  crystalsFound: [],
+  crystalsFound: (() => {
+    try {
+      const raw = localStorage.getItem('crystals-found')
+      return raw ? (JSON.parse(raw) as string[]) : []
+    } catch {
+      return []
+    }
+  })(),
   konamiNight: false,
   toast: null,
   reducedMotion: false,
@@ -102,15 +109,18 @@ export const useJourneyStore = create<JourneyState & JourneyActions>((set) => ({
       gardenActive: isGardenActive(p),
     }),
   toggleSound: () => set((s) => ({ soundOn: !s.soundOn })),
-  foundCrystal: (id) =>
-    set((s) =>
-      s.crystalsFound.includes(id)
-        ? {}
-        : {
-            crystalsFound: [...s.crystalsFound, id],
-            toast: { msg: `✦ crystal found · ${s.crystalsFound.length + 1} / 5`, id: Date.now() },
-          },
-    ),
+  foundCrystal: (id) => {
+    if (get().crystalsFound.includes(id)) return
+    set((s) => ({
+      crystalsFound: [...s.crystalsFound, id],
+      toast: { msg: `✦ crystal found · ${s.crystalsFound.length + 1} / 5`, id: Date.now() },
+    }))
+    try {
+      localStorage.setItem('crystals-found', JSON.stringify(get().crystalsFound))
+    } catch {
+      /* storage unavailable — count simply won't persist */
+    }
+  },
   toggleKonami: () =>
     set((s) => ({
       konamiNight: !s.konamiNight,
