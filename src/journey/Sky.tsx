@@ -34,6 +34,8 @@ export default function Sky() {
     // Skip all per-frame work while the stage is visually static (~60x fewer allocations)
     if (lastStage.current >= 0 && Math.abs(stage - lastStage.current) < 0.0005) return
     lastStage.current = stage
+    // reduced-motion (#15): palette is a pure function of scroll stage — no
+    // time-based tween exists to skip, transitions are already instantaneous.
 
     const pal = paletteAtStage(stage)
     uniforms.uTop.value.setRGB(pal.zenith[0], pal.zenith[1], pal.zenith[2])

@@ -18,6 +18,8 @@ export default function JourneyLights() {
     if (lastStage.current >= 0 && Math.abs(stage - lastStage.current) < 0.0005) return
     lastStage.current = stage
     if (!ambRef.current || !dirRef.current) return
+    // reduced-motion (#15): stage is a pure function of scroll — lerp below
+    // is positional, not temporal, so transitions stay instantaneous.
     _c.copy(WARM_SUN).lerp(MOON_COOL, stage)
     dirRef.current.color.copy(_c)
     ambRef.current.intensity = 0.7 + (0.22 - 0.7) * stage

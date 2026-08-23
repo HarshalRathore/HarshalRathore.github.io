@@ -5,6 +5,8 @@ import CameraRig from './journey/CameraRig'
 import Sky from './journey/Sky'
 import Islands from './journey/Islands'
 import { WAYPOINTS, nextWaypointFrom, prevWaypointFrom, useJourneyStore } from './journey/store'
+import { PROJECTS } from './content/projects'
+import { useOverlayStore } from './content/overlayStore'
 import { useScrollProgress } from './journey/hooks'
 import ScrollHint from './journey/ScrollHint'
 import ProjectOverlay from './journey/ProjectOverlay'
@@ -59,6 +61,15 @@ export default function App() {
       } else if (e.key === 'End') {
         jumpTo(WAYPOINTS.length, !reducedMotion)
         e.preventDefault()
+      } else {
+        // keyboard parity for monument overlays (#15): keys 1-6 open the
+        // project overlays exactly as clicking their monuments does.
+        const digit = ['1', '2', '3', '4', '5', '6'].indexOf(e.key)
+        if (digit !== -1) {
+          const p = PROJECTS[digit]
+          if (p) useOverlayStore.getState().open(p.id)
+          e.preventDefault()
+        }
       }
     },
     [reducedMotion],

@@ -2,6 +2,7 @@ import { useMemo, useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import { WAYPOINT_POS } from './waypoints'
+import { useJourneyStore } from './store'
 import { grassScatter } from './hero'
 
 const GRASS_COUNT = 420
@@ -13,8 +14,9 @@ export default function HeroIsland() {
   const grass = useMemo(() => grassScatter(GRASS_COUNT, PLATEAU_R - 0.4), [])
   useFrame((state) => {
     if (!group.current) return
-    // gentle idle bob — cheap life signal
-    group.current.position.y = pos[1] + Math.sin(state.clock.elapsedTime * 0.6) * 0.15
+    // gentle idle bob — cheap life signal; amplitude 0 under reduced-motion (#15)
+    const amp = useJourneyStore.getState().reducedMotion ? 0 : 0.15
+    group.current.position.y = pos[1] + Math.sin(state.clock.elapsedTime * 0.6) * amp
   })
   return (
     <group ref={group} position={[pos[0], pos[1], pos[2]]}>
