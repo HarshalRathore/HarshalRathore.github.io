@@ -18,7 +18,7 @@ export default function QualityMenu() {
     <button
       type="button"
       onClick={() => setQualityPref(CYCLE[(CYCLE.indexOf(qualityPref) + 1) % CYCLE.length]!)}
-      aria-label="Graphics quality"
+      aria-label={`Graphics quality: ${qualityPref}`}
       className="fixed right-4 top-4 z-10 rounded-full border border-white/15 bg-black/40 px-4 py-2 font-body text-sm backdrop-blur"
       style={{ color: 'var(--hud-ink)', background: 'var(--hud-scrim)' }}
     >

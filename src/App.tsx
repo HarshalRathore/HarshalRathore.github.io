@@ -82,6 +82,7 @@ export default function App() {
       <div
         className="fixed inset-0 z-0 outline-none focus-visible:ring-2 focus-visible:ring-ember"
         tabIndex={0}
+        role="region"
         aria-label="Career Archipelago journey"
         onKeyDown={onKeyDown}
       >
