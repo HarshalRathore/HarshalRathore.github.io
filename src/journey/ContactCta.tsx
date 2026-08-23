@@ -30,16 +30,16 @@ export default function ContactCta() {
   }
 
   const pill =
-    'rounded-full border border-white/15 bg-black/40 backdrop-blur font-body text-sm'
+    'rounded-full border border-white/15 bg-black/60 backdrop-blur font-body text-sm'
 
   return (
-    <div className="fixed bottom-20 left-1/2 z-10 -translate-x-1/2 px-4 text-center">
-      <div className="flex flex-wrap items-center justify-center gap-2">
+    <div className="fixed bottom-20 left-1/2 z-10 -translate-x-1/2 px-3 text-center">
+      <div className="flex flex-wrap items-center justify-center gap-1.5">
         <button
           type="button"
           onClick={copyEmail}
           aria-label={`Copy email address ${EMAIL}`}
-          className={`${pill} px-5 py-2.5 font-medium`}
+          className={`${pill} px-4 py-2 font-medium`}
           style={{ color: '#E8A05C', borderColor: 'rgba(232,160,92,.55)' }}
         >
           {copied ? '✓ copied to clipboard' : `✉ ${EMAIL}`}
@@ -47,8 +47,8 @@ export default function ContactCta() {
         <a
           href={`mailto:${EMAIL}`}
           aria-label={`Email ${EMAIL}`}
-          className={`${pill} px-4 py-2.5`}
-          style={{ color: 'var(--hud-ink)' }}
+          className={`${pill} px-3.5 py-2`}
+          style={{ color: '#E7E3DC' }}
         >
           write to me ↗
         </a>
@@ -57,8 +57,8 @@ export default function ContactCta() {
           target="_blank"
           rel="noreferrer"
           aria-label="GitHub profile"
-          className={`${pill} px-4 py-2.5`}
-          style={{ color: 'var(--hud-ink)' }}
+          className={`${pill} px-3.5 py-2`}
+          style={{ color: '#E7E3DC' }}
         >
           GitHub ↗
         </a>
@@ -67,8 +67,8 @@ export default function ContactCta() {
           target="_blank"
           rel="noreferrer"
           aria-label="LinkedIn profile"
-          className={`${pill} px-4 py-2.5`}
-          style={{ color: 'var(--hud-ink)' }}
+          className={`${pill} px-3.5 py-2`}
+          style={{ color: '#E7E3DC' }}
         >
           LinkedIn ↗
         </a>
@@ -76,7 +76,7 @@ export default function ContactCta() {
           href="./resume/Harshal-Rathore-Resume.pdf"
           download
           aria-label="Download résumé PDF"
-          className={`${pill} border-ember px-4 py-2.5 font-medium`}
+          className={`${pill} border-ember px-3.5 py-2 font-medium`}
           style={{ color: '#E8A05C' }}
         >
           ⤓ résumé.pdf
