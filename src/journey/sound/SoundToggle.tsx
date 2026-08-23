@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useJourneyStore } from '../store'
 import { load, save } from './soundPrefs'
+import { setSoundArmed } from './soundBus'
 
 /**
  * Corner sound toggle. SND-H-001: silent by default, zero autoplay risk —
@@ -15,6 +16,7 @@ export default function SoundToggle() {
 
   const start = () => {
     if (armedRef.current) return
+    setSoundArmed(true)
     const w = window as { __soundArmed?: boolean; __soundPlayErrors?: number }
     const wind = new Audio('audio/wind.ogg')
     wind.loop = true
@@ -35,6 +37,7 @@ export default function SoundToggle() {
     windRef.current?.pause()
     windRef.current = null
     armedRef.current = false
+    setSoundArmed(false)
   }
 
   const onToggle = () => {

@@ -12,6 +12,9 @@ import Dusty from './journey/dusty/Dusty'
 import { Fx } from './journey/fx/FX'
 import SoundToggle from './journey/sound/SoundToggle'
 import Preloader from './journey/preloader/Preloader'
+import Crystals from './journey/secrets/Crystals'
+import Konami from './journey/secrets/Konami'
+import SecretsHud, { ToastHost } from './journey/secrets/SecretsHud'
 
 const GardenLazy = lazy(() => import('./journey/garden/Garden'))
 
@@ -76,6 +79,7 @@ export default function App() {
           <Islands />
           <GardenMount active={gardenActive} />
           <Dusty />
+          <Crystals />
           <Fx />
         </Canvas>
       </div>
@@ -98,6 +102,9 @@ export default function App() {
       )}
       <ScrollHint />
       <ProjectOverlay />
+      <Konami />
+      <SecretsHud />
+      <ToastHost />
       <SoundToggle />
     </div>
   )

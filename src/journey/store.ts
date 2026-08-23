@@ -36,14 +36,21 @@ export interface JourneyState {
   /** device quality tier preset (final selection logic lands in ticket #14) */
   qualityTier: 'high' | 'laptop' | 'mobile-std' | 'mobile-low'
   soundOn: boolean
-  crystalsFound: number
+  /** ids of the hidden crystals found so far (EGG-C-001, issue #13) */
+  crystalsFound: string[]
+  /** Konami-code forced-night override — reversible (EGG-K-001, issue #13) */
+  konamiNight: boolean
+  /** transient achievement toast; `id` lets the host re-trigger announcements */
+  toast: { msg: string; id: number } | null
   reducedMotion: boolean
 }
 
 interface JourneyActions {
   setScrollProgress: (p: number) => void
   toggleSound: () => void
-  findCrystal: () => void
+  foundCrystal: (id: string) => void
+  toggleKonami: () => void
+  clearToast: () => void
 }
 
 /**
@@ -83,7 +90,9 @@ export const useJourneyStore = create<JourneyState & JourneyActions>((set) => ({
   gardenActive: false,
   qualityTier: 'high',
   soundOn: false,
-  crystalsFound: 0,
+  crystalsFound: [],
+  konamiNight: false,
+  toast: null,
   reducedMotion: false,
   setScrollProgress: (p) =>
     set({
@@ -93,5 +102,19 @@ export const useJourneyStore = create<JourneyState & JourneyActions>((set) => ({
       gardenActive: isGardenActive(p),
     }),
   toggleSound: () => set((s) => ({ soundOn: !s.soundOn })),
-  findCrystal: () => set((s) => ({ crystalsFound: s.crystalsFound + 1 })),
+  foundCrystal: (id) =>
+    set((s) =>
+      s.crystalsFound.includes(id)
+        ? {}
+        : {
+            crystalsFound: [...s.crystalsFound, id],
+            toast: { msg: `✦ crystal found · ${s.crystalsFound.length + 1} / 5`, id: Date.now() },
+          },
+    ),
+  toggleKonami: () =>
+    set((s) => ({
+      konamiNight: !s.konamiNight,
+      toast: { msg: s.konamiNight ? 'the sun returns' : 'ancient winds shift — night falls', id: Date.now() },
+    })),
+  clearToast: () => set({ toast: null }),
 }))

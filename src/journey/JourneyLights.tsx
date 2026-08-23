@@ -13,7 +13,8 @@ export default function JourneyLights() {
   const lastStage = useRef(-1)
 
   useFrame(() => {
-    const stage = useJourneyStore.getState().lightStage
+    // Konami night override (#13): forced full-night while konamiNight is on
+    const stage = useJourneyStore.getState().konamiNight ? 1 : useJourneyStore.getState().lightStage
     if (lastStage.current >= 0 && Math.abs(stage - lastStage.current) < 0.0005) return
     lastStage.current = stage
     if (!ambRef.current || !dirRef.current) return
