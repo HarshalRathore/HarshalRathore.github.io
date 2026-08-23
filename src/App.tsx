@@ -9,7 +9,6 @@ import { useScrollProgress } from './journey/hooks'
 import ScrollHint from './journey/ScrollHint'
 import ProjectOverlay from './journey/ProjectOverlay'
 import Dusty from './journey/dusty/Dusty'
-import { Fx } from './journey/fx/FX'
 import SoundToggle from './journey/sound/SoundToggle'
 import Preloader from './journey/preloader/Preloader'
 import Crystals from './journey/secrets/Crystals'
@@ -20,6 +19,9 @@ import Konami from './journey/secrets/Konami'
 import SecretsHud, { ToastHost } from './journey/secrets/SecretsHud'
 
 const GardenLazy = lazy(() => import('./journey/garden/Garden'))
+// Fx is lazy: the postprocessing effect framework (~70 KB gzip) must not ride
+// in the entry chunk — it's only needed once the first frame renders anyway.
+const FxLazy = lazy(() => import('./journey/fx/FX').then((m) => ({ default: m.Fx })))
 
 function GardenMount({ active }: { active: boolean }) {
   return active ? (
@@ -85,7 +87,9 @@ export default function App() {
           <Crystals />
           <AdaptivePerf />
           <PortraitReframe />
-          <Fx />
+          <Suspense fallback={null}>
+            <FxLazy />
+          </Suspense>
         </Canvas>
       </div>
       <header className="fixed left-4 top-4 z-10 rounded-full px-4 py-2 font-display text-xl backdrop-blur-sm border border-white/15" style={{ color: 'var(--hud-ink)', background: 'var(--hud-scrim)' }}>Harshal Rathore</header>
