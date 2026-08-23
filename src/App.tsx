@@ -30,6 +30,8 @@ function jumpTo(w: number, smooth: boolean) {
 
 export default function App() {
   useScrollProgress()
+  // remove the zero-JS boot shell the moment React takes over
+  if (typeof document !== 'undefined') document.getElementById('boot')?.remove()
   const [created, setCreated] = useState(false)
   const activeWaypoint = useJourneyStore((s) => s.activeWaypoint)
   const reducedMotion = useJourneyStore((s) => s.reducedMotion)

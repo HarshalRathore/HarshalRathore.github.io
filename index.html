@@ -9,7 +9,16 @@
     <title>Harshal Rathore — Full-Stack Engineer</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Zero-JS boot shell: paints instantly on cold loads while the bundle
+           downloads. Honestly indeterminate (pulsing ember) — the numbered
+           counter takes over only once React mounts. Removed by React mount. -->
+      <div id="boot" style="position:fixed;inset:0;z-index:60;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0A1122;font-family:Georgia,'Times New Roman',serif;color:#F3EDE2;text-align:center">
+        <div style="font-size:1.4rem;letter-spacing:.35em">HARSHAL RATHORE</div>
+        <div style="margin-top:1.6rem;width:34px;height:34px;border-radius:50%;background:#E8A05C;opacity:.85;animation:bootpulse 1.6s ease-in-out infinite"></div>
+        <style>@keyframes bootpulse{0%,100%{transform:scale(.72);opacity:.35}50%{transform:scale(1);opacity:.9}}</style>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
