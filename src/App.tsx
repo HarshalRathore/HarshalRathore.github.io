@@ -12,6 +12,7 @@ import ScrollHint from './journey/ScrollHint'
 import ProjectOverlay from './journey/ProjectOverlay'
 import Dusty from './journey/dusty/Dusty'
 import SoundToggle from './journey/sound/SoundToggle'
+import ContactCta from './journey/ContactCta'
 import Preloader from './journey/preloader/Preloader'
 import Crystals from './journey/secrets/Crystals'
 import AdaptivePerf from './journey/perf/AdaptivePerf'
@@ -104,7 +105,11 @@ export default function App() {
           </Suspense>
         </Canvas>
       </div>
-      <header className="fixed left-4 top-4 z-10 rounded-full px-4 py-2 font-display text-xl backdrop-blur-sm border border-white/15" style={{ color: 'var(--hud-ink)', background: 'var(--hud-scrim)' }}>Harshal Rathore</header>
+      <header className="fixed left-4 top-4 z-10 rounded-full px-4 py-2 backdrop-blur-sm border border-white/15" style={{ color: 'var(--hud-ink)', background: 'var(--hud-scrim)' }}>
+        <span className="font-display text-xl">Harshal Rathore</span>
+        {/* hero headline verbatim per content-truth override #5 */}
+        <span className="ml-3 hidden font-body text-xs tracking-wide opacity-80 sm:inline">Full-Stack Engineer · Azure-certified</span>
+      </header>
       <nav className="fixed bottom-4 left-1/2 z-10 -translate-x-1/2 rounded-full px-5 py-2 font-body text-sm backdrop-blur-sm border border-white/15" style={{ color: 'var(--hud-ink)', background: 'var(--hud-scrim)' }}>
         {String(activeWaypoint).padStart(2, '0')} — {WAYPOINTS[activeWaypoint - 1]}
       </nav>
@@ -128,6 +133,7 @@ export default function App() {
       <ToastHost />
       <QualityMenu />
       <SoundToggle />
+      <ContactCta />
     </div>
   )
 }
